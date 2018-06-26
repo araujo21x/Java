@@ -1,7 +1,8 @@
 package pkg3.pkg13;
  // @author lucas
 public class Employee {
-    private String nome, sobrenome;
+    private String nome;
+    private String sobrenome;
     private double salario;
     
     public Employee(String nome, String sobrenome, double salario){
