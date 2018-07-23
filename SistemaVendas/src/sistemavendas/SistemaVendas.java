@@ -40,5 +40,7 @@ public class SistemaVendas {
         vendedor.mostrarVenda(itemVenda,vendas[1]);
         
         vendedor.getFaturamentoGeral();
+        vendedor.getItemGeral();
+        
         }
 }

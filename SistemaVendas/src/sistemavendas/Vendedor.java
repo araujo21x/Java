@@ -6,6 +6,8 @@ public class Vendedor {
     private String nome;
     private String endereço;
     private double faturamentoGeral;
+    private int quantidadeGeral;
+    private double subTotalGeral;
 
     public  Vendedor(int cod, String nome, String endereço){
     this.cod= cod;
@@ -16,6 +18,7 @@ public class Vendedor {
     public void getFaturamentoGeral() {
         System.out.println("Faturamento Geral = "+faturamentoGeral);
     }
+    
     public void setFaturamentoGeral(Venda venda){
         String data="16/07/2018";
         int opcao = 1;
@@ -23,11 +26,11 @@ public class Vendedor {
             this.faturamentoGeral += venda.getTotalVenda();
         }else{
             if(venda.getData().equals(data)){
-            this.faturamentoGeral += venda.getTotalVenda();
+                this.faturamentoGeral += venda.getTotalVenda();
             }
         }
     }
-
+    
     public int getCod() {
         return cod;
     }
@@ -100,13 +103,12 @@ public class Vendedor {
     }
     public void mostrarVenda(ItensVenda[] itens, Venda venda){
         int cod= venda.getCod();
-        double total = 0;
         String situação= venda.getSituação();
         String data = venda.getData();
         Cliente  cliente = venda.getCliente();
         Vendedor vendedor = venda.getVendedor() ;
         String formapagamento = venda.getFormapagamento();
-        System.out.println("Código da venda: "+cod+"\nSituação: "+situação+"\nData da venda "+data+
+        System.out.println("    Código da venda: "+cod+"\nSituação: "+situação+"\nData da venda "+data+
                 "Nomde do Cliente"+cliente.getNome()+"Nome do vendedor "+vendedor.getNome()+" Forma de pagamento "+formapagamento);
         
         System.out.println("---------------------------------- itens vendas -------------------------------");
@@ -116,7 +118,8 @@ public class Vendedor {
                     venda.setTotalVenda(linha.getSubtotal());//manda o valor de subtotal para total venda
                     System.out.println("Código do item: "+linha.getCod()+"Desconto: "+linha.getDesconto()+
                           " Nome do produto "+linha.getProduto().getNome()+" Quantidade "+linha.getQuantidade()+
-                           " Subtotal: "+linha.getSubtotal());  
+                           " Subtotal: "+linha.getSubtotal());
+                    setItemGeral(linha.getSubtotal(), linha.getQuantidade(), venda);
                 }
             
             }
@@ -131,4 +134,22 @@ public class Vendedor {
         
         System.out.println("");
     }
+
+    public void setItemGeral(double subtotal, int quantidade,Venda venda) {
+        String data = "16/07/2018";
+        int opcao = 1;
+        if(opcao == 1){
+            this.quantidadeGeral += quantidade;
+            this.subTotalGeral +=  subtotal;
+        }else{
+           if(venda.getData().equals(data)){
+               this.quantidadeGeral += quantidade;
+                this.subTotalGeral +=  subtotal;
+            }
+        }        
+    }
+    public void getItemGeral(){
+        System.out.println("Quantidade Geral: "+this.quantidadeGeral+" Quantidade subTotal: "+this.subTotalGeral);
+    }
+    
 }

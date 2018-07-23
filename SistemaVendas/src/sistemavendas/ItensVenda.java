@@ -4,22 +4,13 @@ package sistemavendas;
 public class ItensVenda {
     
     private int cod;
-    private  double desconto;
-    private  Produto produto;
-    private  int quantidade;
-    private  double subtotal;
-    private  Venda venda;
+    private double desconto;
+    private Produto produto;
+    private int quantidade;
+    private double subtotal;
+    private Venda venda;
     private String  situaçao;
-    private int itemGeral;
-
-    public int getItemGeral() {
-        return itemGeral;
-    }
-
-    public void setItemGeral(int itemGeral) {
-        this.itemGeral += itemGeral;
-    }
-
+    
     public int getCod() {
         return cod;
     }
@@ -75,10 +66,5 @@ public class ItensVenda {
     public void setSituaçao(String situaçao) {
         this.situaçao = situaçao;
     }
-
-    
-    
-    
-    
     
 }
