@@ -19,15 +19,19 @@ public class Vendedor {
         System.out.println("Faturamento Geral = "+faturamentoGeral);
     }
     
-    public void setFaturamentoGeral(Venda venda){
+    public void setFaturamentoGeral(Venda venda, double subTotal){
+        if(venda.getSituação().equals("Cancelado")){
+            this.faturamentoGeral -= subTotal;
+        }else{
         String data="16/07/2018";
         int opcao = 1;
-        if(opcao == 1){
+        if(opcao == 1){//mudar para faturamento por data e geral, geral opcao =1, 
             this.faturamentoGeral += venda.getTotalVenda();
         }else{
             if(venda.getData().equals(data)){
                 this.faturamentoGeral += venda.getTotalVenda();
             }
+        }
         }
     }
     
@@ -103,6 +107,7 @@ public class Vendedor {
     }
     public void mostrarVenda(ItensVenda[] itens, Venda venda){
         int cod= venda.getCod();
+        double totalVenda = 0;
         String situação= venda.getSituação();
         String data = venda.getData();
         Cliente  cliente = venda.getCliente();
@@ -119,34 +124,39 @@ public class Vendedor {
                     System.out.println("Código do item: "+linha.getCod()+"Desconto: "+linha.getDesconto()+
                           " Nome do produto "+linha.getProduto().getNome()+" Quantidade "+linha.getQuantidade()+
                            " Subtotal: "+linha.getSubtotal());
-                    setItemGeral(linha.getSubtotal(), linha.getQuantidade(), venda);
+                    if(venda.getSituação().equals("Ativa")){
+                        setItemGeral(linha.getSubtotal(), linha.getQuantidade(), venda);
+                    }else{
+                        setItemGeral(linha.getSubtotal(), linha.getQuantidade(), venda);
+                        totalVenda += linha.getSubtotal();
+                    } 
                 }
             
             }
         }
-        System.out.println("Total de venda: "+venda.getTotalVenda());//printa o valor de total
-        setFaturamentoGeral(venda);
+            System.out.println("Total de venda: "+venda.getTotalVenda());//printa o valor de total
+            setFaturamentoGeral(venda, totalVenda);
+
         
-    }
-    public void botaoFatu(Venda venda){
-        double total =0 ;
-        total = venda.getTotalVenda();
-        
-        System.out.println("");
     }
 
     public void setItemGeral(double subtotal, int quantidade,Venda venda) {
-        String data = "16/07/2018";
-        int opcao = 1;
-        if(opcao == 1){
-            this.quantidadeGeral += quantidade;
-            this.subTotalGeral +=  subtotal;
+        if(venda.getSituação().equals("Cancelado")){
+            this.quantidadeGeral -= quantidade;
+            this.subTotalGeral -=  subtotal;
         }else{
-           if(venda.getData().equals(data)){
-               this.quantidadeGeral += quantidade;
+            String data = "16/07/2018";
+            int opcao = 1;
+             if(opcao == 1){
+                this.quantidadeGeral += quantidade;
                 this.subTotalGeral +=  subtotal;
+           }else{
+               if(venda.getData().equals(data)){
+                  this.quantidadeGeral += quantidade;
+                   this.subTotalGeral +=  subtotal;
+                }
             }
-        }        
+        }
     }
     public void getItemGeral(){
         System.out.println("Quantidade Geral: "+this.quantidadeGeral+" Quantidade subTotal: "+this.subTotalGeral);

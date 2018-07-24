@@ -42,5 +42,10 @@ public class SistemaVendas {
         vendedor.getFaturamentoGeral();
         vendedor.getItemGeral();
         
+        
+        vendedor.cancelarVenda(vendas[0]);
+        vendedor.mostrarVenda(itemVenda,vendas[0]); 
+        vendedor.getFaturamentoGeral();
+        vendedor.getItemGeral();
         }
 }

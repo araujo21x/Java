@@ -18,7 +18,7 @@ public class Venda {
         this.cliente=cliente;
         this.vendedor= vendedor;
         this.formapagamento = formapagamento;
-        
+        this.situação  = "Ativa";
 }
 
     public int getCod() {
