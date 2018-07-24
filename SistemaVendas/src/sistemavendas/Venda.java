@@ -72,7 +72,7 @@ public class Venda {
     public void setTotalVenda(double subtotal){//para gerar total da vendaS
         this.total = this.total + subtotal;
     }
-    public double getTotalVenda(){//para printar total da venda
-        return this.total;
+    public void getTotalVenda(){//para printar total da venda
+        System.out.println("Total:"+total);
     }
 }

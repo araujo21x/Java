@@ -28,16 +28,23 @@ public class SistemaVendas {
             
             vendas[0] = vendedor.vender(0,"16/07/2018", clientes[0], vendedor, "Cartão");
             vendas[1] = vendedor.vender(0,"18/07/2018", clientes[1], vendedor, "Dinheiro"); 
+            vendas[2] = vendedor.vender(0,"17/07/2018", clientes[0], vendedor, "Euro"); 
             
        ItensVenda[] itemVenda = new ItensVenda[20];
             itemVenda[0] = vendedor.incluirItem(0, produtos[0], 2, vendas[0]);
             itemVenda[1] = vendedor.incluirItem(3, produtos[2], 2, vendas[0]);
             itemVenda[2] = vendedor.incluirItem(1, produtos[1], 2, vendas[1]);
             itemVenda[3] = vendedor.incluirItem(1, produtos[4], 2, vendas[1]);
+            itemVenda[4] = vendedor.incluirItem(1, produtos[3], 2, vendas[2]);
+            itemVenda[5] = vendedor.incluirItem(1, produtos[4], 2, vendas[2]);
 
 
-        vendedor.mostrarVenda(itemVenda,vendas[0]);   
+        vendedor.mostrarVenda(itemVenda,vendas[0]); 
+        System.out.println("");
         vendedor.mostrarVenda(itemVenda,vendas[1]);
+        System.out.println("");
+        vendedor.mostrarVenda(itemVenda,vendas[2]);
+        System.out.println("");
         
         vendedor.getFaturamentoGeral();
         vendedor.getItemGeral();
