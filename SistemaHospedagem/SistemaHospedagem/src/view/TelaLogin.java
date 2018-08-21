@@ -207,9 +207,10 @@ public class TelaLogin extends javax.swing.JFrame {
     private void acessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acessarActionPerformed
         if(nick.getText().equals("lucas") && senha.getText().equals("123")){
             JOptionPane.showMessageDialog(null, "Bem vindo");
-            java.awt.EventQueue.invokeLater(() -> {
-                new TelaInicial().setVisible(true);
-            });
+            TelaPrincipal principal = new TelaPrincipal();
+            principal.setVisible(true);
+            dispose();
+           
         }else{
             JOptionPane.showMessageDialog(null, "Erro");
         }

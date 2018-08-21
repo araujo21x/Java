@@ -26,7 +26,7 @@ public class Pessoa {
         this.email = email;
         this.saude = saude;
     }
-
+    
     public String getNome() {
         return nome;
     }

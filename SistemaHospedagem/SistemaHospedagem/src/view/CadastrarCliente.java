@@ -1,10 +1,6 @@
 package view;
 
 public class CadastrarCliente extends javax.swing.JInternalFrame {
-
-    public CadastrarCliente() {
-        initComponents();
-    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -49,6 +45,8 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
         jLabel19 = new javax.swing.JLabel();
         dddFixo = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
+
+        setClosable(true);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Cadastro de Cliente");

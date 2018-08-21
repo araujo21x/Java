@@ -14,6 +14,14 @@ public class Cliente extends Pessoa{
         return placaCarro;
     }
 
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
     public void setPlacaCarro(String placaCarro) {
         this.placaCarro = placaCarro;
     }

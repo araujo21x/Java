@@ -1,8 +1,8 @@
 //* @author araujo
 package view;
 
-public class TelaInicial extends javax.swing.JFrame {
-    public TelaInicial() {
+public class TelaPrincipal extends javax.swing.JFrame {
+    public TelaPrincipal() {
         initComponents();
     }
     @SuppressWarnings("unchecked")
@@ -35,7 +35,6 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu4.setText("jMenu4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(getMaximumSize());
 
         jDesktopPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jDesktopPane1.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -73,9 +72,9 @@ public class TelaInicial extends javax.swing.JFrame {
 
         cadastrarCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         cadastrarCliente.setText("Cadastrar");
-        cadastrarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cadastrarClienteMouseClicked(evt);
+        cadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarClienteActionPerformed(evt);
             }
         });
         jMenu8.add(cadastrarCliente);
@@ -111,20 +110,10 @@ public class TelaInicial extends javax.swing.JFrame {
 
         situacaoQuarto.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         situacaoQuarto.setText("Situação");
-        situacaoQuarto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                situacaoQuartoActionPerformed(evt);
-            }
-        });
         jMenuItem2.add(situacaoQuarto);
 
         modificarQuarto.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         modificarQuarto.setText("Modificar");
-        modificarQuarto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarQuartoActionPerformed(evt);
-            }
-        });
         jMenuItem2.add(modificarQuarto);
 
         jMenuBar1.add(jMenuItem2);
@@ -175,22 +164,15 @@ public class TelaInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void modificarQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarQuartoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_modificarQuartoActionPerformed
-
-    private void situacaoQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_situacaoQuartoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_situacaoQuartoActionPerformed
-
-    private void cadastrarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarClienteMouseClicked
-        
-       
-    }//GEN-LAST:event_cadastrarClienteMouseClicked
-
     private void jDesktopPane1ComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDesktopPane1ComponentMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_jDesktopPane1ComponentMoved
+
+    private void cadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarClienteActionPerformed
+        CadastrarCliente cadastrarCliente = new CadastrarCliente();
+        jDesktopPane1.add(cadastrarCliente);
+        cadastrarCliente.setVisible(true);
+    }//GEN-LAST:event_cadastrarClienteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem cadastrarCliente;
