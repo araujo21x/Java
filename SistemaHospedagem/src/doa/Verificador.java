@@ -13,7 +13,7 @@ public class Verificador{
                 && verificadorData(novoCliente.getNascimento()) && verificadorCep(novoCliente.getCep())
                 && verificadorPlacaCarro(novoCliente.getPlacaCarro())) {
             situacaoCadastrado = true;
-        }
+        }//fmaskdmfkaskdmfklamçlfmasçmdfklamçeklfmasl
         
         return situacaoCadastrado;
     }
