@@ -22,8 +22,8 @@ public class ClienteDAO {
 
     }
     
-    public void save(Cliente cliente) {    
-        listaClientes.add(cliente);
+    public void save(Cliente novocliente) {    
+        listaClientes.add(novocliente);
     }
     
     public List<Cliente> list() {

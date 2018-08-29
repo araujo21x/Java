@@ -1,12 +1,12 @@
 package br.com.sistemahospedagem.view;
 
-import br.com.sistemahospedagem.dao.ClienteDAO;
-import static br.com.sistemahospedagem.validation.ClienteVerificador.verificar;
-import br.com.sistemahospedagem.model.Cliente;
+import br.com.sistemahospedagem.dao.FuncionarioDAO;
+import static br.com.sistemahospedagem.validation.FuncionarioVerificador.verificar;
+import br.com.sistemahospedagem.model.Funcionario;
 import javax.swing.JOptionPane;
 
-public class CadastrarCliente extends javax.swing.JInternalFrame {
-    public CadastrarCliente(){
+public class CadastrarFuncionario extends javax.swing.JInternalFrame {
+    public CadastrarFuncionario(){
         initComponents();
     }
     @SuppressWarnings("unchecked")
@@ -47,12 +47,6 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
         sexo = new javax.swing.JComboBox<>();
         estado = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        placaCarro = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        corCarro = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        modelo = new javax.swing.JTextField();
         cpf = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
 
@@ -62,7 +56,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
         setResizable(true);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Cadastro de Cliente");
+        jLabel1.setText("Cadastro de Funcionario");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Nome:");
@@ -205,36 +199,6 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
         jLabel19.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel19.setText("Veiculo");
 
-        jLabel20.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel20.setText("Placa do Carro:");
-
-        placaCarro.setText("55555-55");
-        placaCarro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                placaCarroMouseClicked(evt);
-            }
-        });
-
-        jLabel21.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel21.setText("Cor:");
-
-        corCarro.setText("prata");
-        corCarro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                corCarroMouseClicked(evt);
-            }
-        });
-
-        jLabel22.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel22.setText("Modelo:");
-
-        modelo.setText("Gran Siena");
-        modelo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                modeloMouseClicked(evt);
-            }
-        });
-
         cpf.setText("000.000.000-11");
         cpf.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -254,25 +218,6 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel22)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel21)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(corCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(144, 144, 144)
-                                        .addComponent(cancelar)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cadastrar)
-                                    .addComponent(jLabel20))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(placaCarro))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel17)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -294,11 +239,6 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(sobrenome))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel12))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,7 +249,17 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(email)))
+                                .addComponent(email))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(144, 144, 144)
+                                        .addComponent(cancelar)
+                                        .addGap(127, 127, 127)
+                                        .addComponent(cadastrar))
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel12))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,15 +348,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21)
-                    .addComponent(corCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20)
-                    .addComponent(placaCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
                     .addComponent(cadastrar))
@@ -458,33 +400,29 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
 
-        Cliente novoCliente = new Cliente();
+        Funcionario novoFuncionario = new Funcionario();
 
-        novoCliente.setNome( nome.getText());
-        novoCliente.setSobrenome(sobrenome.getText());
-        novoCliente.setNascimento(nascimento.getText());
-        novoCliente.setSexo((String)sexo.getSelectedItem());
-        novoCliente.setCpf(cpf.getText());
-        novoCliente.setRua(rua.getText());
-        novoCliente.setBairro(bairro.getText());
-        novoCliente.setCidade(cidade.getText());
-        novoCliente.setNumeroCasa(numero.getText());
-        novoCliente.setCep(cep.getText());
-        novoCliente.setEstado((String)estado.getSelectedItem());
-        novoCliente.setCelular(celular.getText());
-        novoCliente.setEmail(email.getText());
-        novoCliente.setModelo(modelo.getText());
-        novoCliente.setCorCarro(corCarro.getText());
-        novoCliente.setPlacaCarro(placaCarro.getText());
+        novoFuncionario.setNome( nome.getText());
+        novoFuncionario.setSobrenome(sobrenome.getText());
+        novoFuncionario.setNascimento(nascimento.getText());
+        novoFuncionario.setSexo((String)sexo.getSelectedItem());
+        novoFuncionario.setCpf(cpf.getText());
+        novoFuncionario.setRua(rua.getText());
+        novoFuncionario.setBairro(bairro.getText());
+        novoFuncionario.setCidade(cidade.getText());
+        novoFuncionario.setNumeroCasa(numero.getText());
+        novoFuncionario.setCep(cep.getText());
+        novoFuncionario.setEstado((String)estado.getSelectedItem());
+        novoFuncionario.setCelular(celular.getText());
+        novoFuncionario.setEmail(email.getText());
         
-        if(verificar(novoCliente)){
-            
-            ClienteDAO dao = new ClienteDAO();
-            dao.save(novoCliente);
+        if(verificar(novoFuncionario)){
+            FuncionarioDAO dao = new FuncionarioDAO();
+            dao.save(novoFuncionario);
             JOptionPane.showMessageDialog(null, "Confirmado");
             JOptionPane.showMessageDialog(null, dao.list());
             System.out.print("cliente salvo : "+dao.list());
-             
+            
         }else{
             JOptionPane.showMessageDialog(null, "Erro");
             System.out.println("Erro");
@@ -512,18 +450,6 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
         nome.setText("");
     }//GEN-LAST:event_nomeMouseClicked
 
-    private void modeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modeloMouseClicked
-        modelo.setText("");
-    }//GEN-LAST:event_modeloMouseClicked
-
-    private void corCarroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_corCarroMouseClicked
-        corCarro.setText("");
-    }//GEN-LAST:event_corCarroMouseClicked
-
-    private void placaCarroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placaCarroMouseClicked
-        placaCarro.setText("");
-    }//GEN-LAST:event_placaCarroMouseClicked
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bairro;
     private javax.swing.JButton cadastrar;
@@ -531,7 +457,6 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField celular;
     private javax.swing.JTextField cep;
     private javax.swing.JTextField cidade;
-    private javax.swing.JTextField corCarro;
     private javax.swing.JTextField cpf;
     private javax.swing.JTextField email;
     private javax.swing.JComboBox<String> estado;
@@ -546,9 +471,6 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -559,11 +481,9 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JTextField modelo;
     private javax.swing.JTextField nascimento;
     private javax.swing.JTextField nome;
     private javax.swing.JTextField numero;
-    private javax.swing.JTextField placaCarro;
     private javax.swing.JTextField rua;
     private javax.swing.JComboBox<String> sexo;
     private javax.swing.JTextField sobrenome;

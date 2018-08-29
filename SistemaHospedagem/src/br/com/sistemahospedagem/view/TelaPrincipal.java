@@ -127,6 +127,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         cadastrarFuncionario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         cadastrarFuncionario.setText("Cadastrar");
+        cadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarFuncionarioActionPerformed(evt);
+            }
+        });
         jMenu9.add(cadastrarFuncionario);
 
         modificarFuncionario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -173,6 +178,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jDesktopPane1.add(cadastrarCliente);
         cadastrarCliente.setVisible(true);
     }//GEN-LAST:event_cadastrarClienteActionPerformed
+
+    private void cadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarFuncionarioActionPerformed
+        CadastrarFuncionario cadastrarFuncionario = new CadastrarFuncionario();
+        jDesktopPane1.add(cadastrarFuncionario);
+        cadastrarFuncionario.setVisible(true);
+    }//GEN-LAST:event_cadastrarFuncionarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem cadastrarCliente;

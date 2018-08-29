@@ -1,15 +1,15 @@
 package br.com.sistemahospedagem.validation;
 
-import br.com.sistemahospedagem.model.Cliente;
+import br.com.sistemahospedagem.model.Funcionario;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class PessoaVerificador{
+public class FuncionarioVerificador{
     
-    public static boolean verificar(Cliente novoCliente){
+    public static boolean verificar(Funcionario novoFuncionario){
         boolean situacaoCadastrado = false;
         
-        if(verificadorCelular(novoCliente.getCelular())) {
+        if(verificadorData(novoFuncionario.getNascimento())) {
             situacaoCadastrado = true;
         }
         
@@ -48,7 +48,7 @@ public class PessoaVerificador{
         boolean situacaoCelular = false;
         
         if(celular != null && celular.length() > 0){
-            String expressãoCelular = "9\\[0-9]{4}-\\[0-9]{4}";
+            String expressãoCelular = "9\\d{4}-\\d{4}";
             Pattern pattern = Pattern.compile(expressãoCelular, Pattern.CASE_INSENSITIVE);
             Matcher matcher = pattern.matcher(celular);
             
@@ -60,11 +60,11 @@ public class PessoaVerificador{
         return situacaoCelular;
     }
     
-    public static boolean verificadorData(String data){
+    public static boolean verificadorData(String data){//tentar colocar caixa de data no swing e tirar isso
         boolean situacaoData = false;
         
         if(data != null && data.length() > 0){
-            String expressãoData = "\\[0-9]{2}/\\[0-9]{2}/\\[0-9]{4}";
+            String expressãoData = "\\d{2}/\\d{2}/\\d{4}";
             Pattern pattern = Pattern.compile(expressãoData, Pattern.CASE_INSENSITIVE);
             Matcher matcher = pattern.matcher(data);
             
@@ -80,7 +80,7 @@ public class PessoaVerificador{
         boolean situacaoCep = false;
         
         if(cep != null && cep.length() > 0){
-            String expressãoCep = "\\[0-9]{5}-\\[0-9]{3}";
+            String expressãoCep = "\\d{5}-\\d{3}";
             Pattern pattern = Pattern.compile(expressãoCep, Pattern.CASE_INSENSITIVE);
             Matcher matcher = pattern.matcher(cep);
             
@@ -92,19 +92,4 @@ public class PessoaVerificador{
         return situacaoCep;
     }
     
-    public static boolean verificadorPlacaCarro(String placa){
-        boolean situacaoPlaca = false;
-        
-        if(placa != null && placa.length() > 0){
-            String expressãoPlaca = "\\[a-zA-Z]{3}-\\[0-9]{3}";
-            Pattern pattern = Pattern.compile(expressãoPlaca, Pattern.CASE_INSENSITIVE);
-            Matcher matcher = pattern.matcher(placa);
-            
-            if(matcher.matches()){
-                situacaoPlaca = true;
-            }
-        }
-        
-        return situacaoPlaca;
-    }
 }
