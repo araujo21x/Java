@@ -9,7 +9,7 @@ public class FuncionarioVerificador{
     public static boolean verificar(Funcionario novoFuncionario){
         boolean situacaoCadastrado = false;
         
-        if(verificadorData(novoFuncionario.getNascimento())) {
+        if(verificadorEmail(novoFuncionario.getEmail())) {
             situacaoCadastrado = true;
         }
         
@@ -44,22 +44,6 @@ public class FuncionarioVerificador{
         return situacaoEmail;
     }
     
-    public static boolean verificadorCelular(String celular){
-        boolean situacaoCelular = false;
-        
-        if(celular != null && celular.length() > 0){
-            String expressãoCelular = "9\\d{4}-\\d{4}";
-            Pattern pattern = Pattern.compile(expressãoCelular, Pattern.CASE_INSENSITIVE);
-            Matcher matcher = pattern.matcher(celular);
-            
-            if(matcher.matches()){
-                situacaoCelular = true;
-            }
-        }
-
-        return situacaoCelular;
-    }
-    
     public static boolean verificadorData(String data){//tentar colocar caixa de data no swing e tirar isso
         boolean situacaoData = false;
         
@@ -74,22 +58,6 @@ public class FuncionarioVerificador{
         }
         
         return situacaoData;
-    }
-    
-    public static boolean verificadorCep(String cep){
-        boolean situacaoCep = false;
-        
-        if(cep != null && cep.length() > 0){
-            String expressãoCep = "\\d{5}-\\d{3}";
-            Pattern pattern = Pattern.compile(expressãoCep, Pattern.CASE_INSENSITIVE);
-            Matcher matcher = pattern.matcher(cep);
-            
-            if(matcher.matches()){
-                situacaoCep = true;
-            }
-        }
-        
-        return situacaoCep;
-    }
+    }   
     
 }

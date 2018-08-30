@@ -129,6 +129,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         sair.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         sair.setText("Sair");
+        sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairActionPerformed(evt);
+            }
+        });
         jMenu10.add(sair);
 
         jMenuBar1.add(jMenu10);
@@ -172,6 +177,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void listarFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarFuncionariosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listarFuncionariosActionPerformed
+
+    private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
+        dispose();
+    }//GEN-LAST:event_sairActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem cadastrarCliente;

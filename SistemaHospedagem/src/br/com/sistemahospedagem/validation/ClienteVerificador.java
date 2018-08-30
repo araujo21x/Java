@@ -9,7 +9,7 @@ public class ClienteVerificador{
     public static boolean verificar(Cliente novoCliente){
         boolean situacaoCadastrado = false;
         
-        if(verificadorData(novoCliente.getNascimento())) {
+        if(verificadorEmail(novoCliente.getEmail()) && verificadorPlacaCarro(novoCliente.getPlacaCarro())) {
             situacaoCadastrado = true;
         }
         
@@ -43,55 +43,7 @@ public class ClienteVerificador{
         
         return situacaoEmail;
     }
-    
-    public static boolean verificadorCelular(String celular){
-        boolean situacaoCelular = false;
-        
-        if(celular != null && celular.length() > 0){
-            String expressãoCelular = "9\\d{4}-\\d{4}";
-            Pattern pattern = Pattern.compile(expressãoCelular, Pattern.CASE_INSENSITIVE);
-            Matcher matcher = pattern.matcher(celular);
-            
-            if(matcher.matches()){
-                situacaoCelular = true;
-            }
-        }
-
-        return situacaoCelular;
-    }
-    
-    public static boolean verificadorData(String data){//tentar colocar caixa de data no swing e tirar isso
-        boolean situacaoData = false;
-        
-        if(data != null && data.length() > 0){
-            String expressãoData = "\\d{2}/\\d{2}/\\d{4}";
-            Pattern pattern = Pattern.compile(expressãoData, Pattern.CASE_INSENSITIVE);
-            Matcher matcher = pattern.matcher(data);
-            
-            if(matcher.matches()){
-                situacaoData = true;
-            }
-        }
-        
-        return situacaoData;
-    }
-    
-    public static boolean verificadorCep(String cep){
-        boolean situacaoCep = false;
-        
-        if(cep != null && cep.length() > 0){
-            String expressãoCep = "\\d{5}-\\d{3}";
-            Pattern pattern = Pattern.compile(expressãoCep, Pattern.CASE_INSENSITIVE);
-            Matcher matcher = pattern.matcher(cep);
-            
-            if(matcher.matches()){
-                situacaoCep = true;
-            }
-        }
-        
-        return situacaoCep;
-    }
-    
+     
     public static boolean verificadorPlacaCarro(String placa){//Mal funcionamento corrigir as letras, ve como deixar só elas ou um '&&'
         boolean situacaoPlaca = false;
         
