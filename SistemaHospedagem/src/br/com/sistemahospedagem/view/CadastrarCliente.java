@@ -100,6 +100,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
         jLabel9.setText("Dados Pessoais");
 
         nascimento.setText("Ex: 21/02/1997");
+        nascimento.setToolTipText("");
         nascimento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nascimentoMouseClicked(evt);

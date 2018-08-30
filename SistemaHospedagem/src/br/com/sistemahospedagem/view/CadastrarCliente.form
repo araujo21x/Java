@@ -325,6 +325,7 @@
         <Component class="javax.swing.JTextField" name="nascimento">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ex: 21/02/1997"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="nascimentoMouseClicked"/>

@@ -13,21 +13,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu8 = new javax.swing.JMenu();
+        listarClientes = new javax.swing.JMenu();
         cadastrarCliente = new javax.swing.JMenuItem();
-        chekIn = new javax.swing.JMenuItem();
-        chekOut = new javax.swing.JMenuItem();
-        despesas = new javax.swing.JMenuItem();
-        modificarCadastro = new javax.swing.JMenuItem();
-        verificarSituacao = new javax.swing.JMenuItem();
+        listarCliente = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenu();
         cadastrarQuartos = new javax.swing.JMenuItem();
-        situacaoQuarto = new javax.swing.JMenuItem();
-        modificarQuarto = new javax.swing.JMenuItem();
+        listarQuartos = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
-        verificarFuncionarios = new javax.swing.JMenuItem();
         cadastrarFuncionario = new javax.swing.JMenuItem();
-        modificarFuncionario = new javax.swing.JMenuItem();
+        listarFuncionarios = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         desenvolvedores = new javax.swing.JMenuItem();
         sair = new javax.swing.JMenuItem();
@@ -67,8 +61,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(153, 153, 153));
 
-        jMenu8.setText("Cliente");
-        jMenu8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        listarClientes.setText("Cliente");
+        listarClientes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         cadastrarCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         cadastrarCliente.setText("Cadastrar");
@@ -77,29 +71,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 cadastrarClienteActionPerformed(evt);
             }
         });
-        jMenu8.add(cadastrarCliente);
+        listarClientes.add(cadastrarCliente);
 
-        chekIn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        chekIn.setText("Chek-in");
-        jMenu8.add(chekIn);
+        listarCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        listarCliente.setText("Listar");
+        listarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarClienteActionPerformed(evt);
+            }
+        });
+        listarClientes.add(listarCliente);
 
-        chekOut.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        chekOut.setText("Chek-out");
-        jMenu8.add(chekOut);
-
-        despesas.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        despesas.setText("Despesas");
-        jMenu8.add(despesas);
-
-        modificarCadastro.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        modificarCadastro.setText("Modificar Cadastro");
-        jMenu8.add(modificarCadastro);
-
-        verificarSituacao.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        verificarSituacao.setText("Verificar Situação");
-        jMenu8.add(verificarSituacao);
-
-        jMenuBar1.add(jMenu8);
+        jMenuBar1.add(listarClientes);
 
         jMenuItem2.setText("Quartos");
         jMenuItem2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -108,22 +91,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cadastrarQuartos.setText("Cadastrar");
         jMenuItem2.add(cadastrarQuartos);
 
-        situacaoQuarto.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        situacaoQuarto.setText("Situação");
-        jMenuItem2.add(situacaoQuarto);
-
-        modificarQuarto.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        modificarQuarto.setText("Modificar");
-        jMenuItem2.add(modificarQuarto);
+        listarQuartos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        listarQuartos.setText("Listar");
+        jMenuItem2.add(listarQuartos);
 
         jMenuBar1.add(jMenuItem2);
 
         jMenu9.setText("Funcionario");
         jMenu9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-
-        verificarFuncionarios.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        verificarFuncionarios.setText("Verificar");
-        jMenu9.add(verificarFuncionarios);
 
         cadastrarFuncionario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         cadastrarFuncionario.setText("Cadastrar");
@@ -134,9 +109,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu9.add(cadastrarFuncionario);
 
-        modificarFuncionario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        modificarFuncionario.setText("Modificar");
-        jMenu9.add(modificarFuncionario);
+        listarFuncionarios.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        listarFuncionarios.setText("Listar");
+        listarFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarFuncionariosActionPerformed(evt);
+            }
+        });
+        jMenu9.add(listarFuncionarios);
 
         jMenuBar1.add(jMenu9);
 
@@ -185,28 +165,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cadastrarFuncionario.setVisible(true);
     }//GEN-LAST:event_cadastrarFuncionarioActionPerformed
 
+    private void listarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listarClienteActionPerformed
+
+    private void listarFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarFuncionariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listarFuncionariosActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem cadastrarCliente;
     private javax.swing.JMenuItem cadastrarFuncionario;
     private javax.swing.JMenuItem cadastrarQuartos;
-    private javax.swing.JMenuItem chekIn;
-    private javax.swing.JMenuItem chekOut;
     private javax.swing.JMenuItem desenvolvedores;
-    private javax.swing.JMenuItem despesas;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuItem2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JMenuItem modificarCadastro;
-    private javax.swing.JMenuItem modificarFuncionario;
-    private javax.swing.JMenuItem modificarQuarto;
+    private javax.swing.JMenuItem listarCliente;
+    private javax.swing.JMenu listarClientes;
+    private javax.swing.JMenuItem listarFuncionarios;
+    private javax.swing.JMenuItem listarQuartos;
     private javax.swing.JMenuItem sair;
-    private javax.swing.JMenuItem situacaoQuarto;
-    private javax.swing.JMenuItem verificarFuncionarios;
-    private javax.swing.JMenuItem verificarSituacao;
     // End of variables declaration//GEN-END:variables
 }
