@@ -1,18 +1,25 @@
 package br.com.sistemahospedagem.model;
 
-import javax.swing.JComboBox;
-
 public class Cliente extends Pessoa {
     
     private String modelo;
     private String corCarro;
     private String placaCarro;
     private String observacao;
+    private String situacao;
     
     public Cliente(){
         
     }
 
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+    
     public String getModelo() {
         return modelo;
     }

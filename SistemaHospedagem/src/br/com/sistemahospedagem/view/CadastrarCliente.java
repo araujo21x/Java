@@ -455,7 +455,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
         novoCliente.setModelo(modelo.getText());
         novoCliente.setCorCarro(corCarro.getText());
         novoCliente.setPlacaCarro(placaCarro.getText());
-        JOptionPane.showMessageDialog(null, novoCliente);
+        novoCliente.setSituacao("Inativo");
         
         if(verificar(novoCliente)){
             
