@@ -6,13 +6,16 @@ import java.util.List;
 
 public class ClienteDAO {
    
-    private final List<Cliente> listaClientes = new ArrayList<>();
+    private static List<Cliente> listaClientes;
 
     public ClienteDAO() {
 
     }
     
-    public void save(Cliente novocliente) {    
+    public void save(Cliente novocliente) {
+        if(listaClientes == null) {
+            listaClientes = new ArrayList<>();
+        }
         listaClientes.add(novocliente);
     }
     

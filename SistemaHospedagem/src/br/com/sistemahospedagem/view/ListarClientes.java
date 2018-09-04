@@ -2,14 +2,17 @@ package br.com.sistemahospedagem.view;
 
 import br.com.sistemahospedagem.dao.ClienteDAO;
 import br.com.sistemahospedagem.model.Cliente;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public final class ListarClientes extends javax.swing.JInternalFrame {
 
+    private List<Cliente> lista;
+    private ClienteDAO dao;
+    
     public ListarClientes() {
         initComponents();
-        adicionarLinhaJTable();
+        loadJTable();
     }
     
     @SuppressWarnings("unchecked")
@@ -36,7 +39,15 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
             new String [] {
                 "Situação", "Nome", "Sobrenome", "CPF"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tabelaClientes);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -72,19 +83,18 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void adicionarLinhaJTable(){
+    public void loadJTable(){
         DefaultTableModel modelo = (DefaultTableModel) tabelaClientes.getModel();
-        ClienteDAO dados = new ClienteDAO();
-        ArrayList<Cliente> list = (ArrayList<Cliente>) dados.list();
-        Object rowData[] = new Object[4];
-        for(int i = 0; 1 <= list.size(); i++){          
-            rowData[0] = list.get(i).getSituacao();
-            rowData[1] = list.get(i).getNome();
-            rowData[2] = list.get(i).getSobrenome();
-            rowData[3] = list.get(i).getCpf();
-            modelo.addRow(rowData);
+        dao = new ClienteDAO();
+        lista = dao.list();
+        for(Cliente entity: lista) {
+            Object[] insered = new Object[4];
+            insered[0] = entity.getSituacao(); 
+            insered[1] = entity.getNome();
+            insered[2] = entity.getSobrenome();
+            insered[3] = entity.getCpf();
+            modelo.addRow(insered);
         }
-        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

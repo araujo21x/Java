@@ -1,14 +1,14 @@
 package br.com.sistemahospedagem.view;
 
 import br.com.sistemahospedagem.dao.ClienteDAO;
-import static br.com.sistemahospedagem.validation.ClienteVerificador.verificar;
 import br.com.sistemahospedagem.model.Cliente;
-import javax.swing.JOptionPane;
 
 public class CadastrarCliente extends javax.swing.JInternalFrame {
-    public CadastrarCliente(){
+
+    public CadastrarCliente() {
         initComponents();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -437,6 +437,33 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
 
+       
+
+        for (int i = 0; i <= 10; i++) {
+             Cliente novoCliente = new Cliente();
+            novoCliente.setNome("teste"+i);
+            novoCliente.setSobrenome("teste"+i);
+            novoCliente.setNascimento("teste"+i);
+            novoCliente.setSexo((String) sexo.getSelectedItem());
+            novoCliente.setCpf("teste"+i);
+            novoCliente.setRua("teste"+i);
+            novoCliente.setBairro("teste"+i);
+            novoCliente.setCidade("teste"+i);
+            novoCliente.setNumeroCasa("teste"+i);
+            novoCliente.setCep("teste"+i);
+            novoCliente.setEstado((String) estado.getSelectedItem());
+            novoCliente.setCelular("teste"+i);
+            novoCliente.setEmail("teste"+i);
+            novoCliente.setModelo("teste"+i);
+            novoCliente.setCorCarro("teste"+i);
+            novoCliente.setPlacaCarro("teste"+i);
+            novoCliente.setSituacao("Inativo");
+            ClienteDAO dao = new ClienteDAO();
+            dao.save(novoCliente);
+        }
+
+
+        /*
         Cliente novoCliente = new Cliente();
 
         novoCliente.setNome( nome.getText());
@@ -468,7 +495,8 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Erro");
             System.out.println("Erro");
         }
-        
+         */
+
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void emailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailMouseClicked
