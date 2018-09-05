@@ -440,7 +440,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
        
 
         for (int i = 0; i <= 10; i++) {
-             Cliente novoCliente = new Cliente();
+            Cliente novoCliente = new Cliente();
             novoCliente.setNome("teste"+i);
             novoCliente.setSobrenome("teste"+i);
             novoCliente.setNascimento("teste"+i);

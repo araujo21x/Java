@@ -23,7 +23,7 @@ public class ClienteDAO {
         return listaClientes;
     }
     
-    public void remove(Cliente cliente) {
-        listaClientes.remove(cliente);
+    public void remove(int index) {
+        listaClientes.remove(index);
     }
 }
