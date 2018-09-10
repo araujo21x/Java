@@ -10,7 +10,6 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
 
     private List<Cliente> lista;
     private ClienteDAO dao;
-    private Cliente cliente;
     
     public ListarClientes() {
         initComponents();
@@ -26,7 +25,7 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaClientes = new javax.swing.JTable();
         Excluir = new javax.swing.JButton();
-        Alterar = new javax.swing.JButton();
+        modificar = new javax.swing.JButton();
         chekIn = new javax.swing.JButton();
         chekOut = new javax.swing.JButton();
 
@@ -63,7 +62,12 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
             }
         });
 
-        Alterar.setText("Alterar");
+        modificar.setText("Modificar");
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
 
         chekIn.setText("Chek-in");
 
@@ -84,7 +88,7 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(chekOut)
                 .addGap(18, 18, 18)
-                .addComponent(Alterar)
+                .addComponent(modificar)
                 .addGap(18, 18, 18)
                 .addComponent(Excluir)
                 .addGap(170, 170, 170))
@@ -100,7 +104,7 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chekIn)
                     .addComponent(chekOut)
-                    .addComponent(Alterar)
+                    .addComponent(modificar)
                     .addComponent(Excluir))
                 .addContainerGap())
         );
@@ -120,50 +124,62 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
-        //System.out.println("linha selecionada = "+tabelaClientes.getSelectedRow());
-        int itemRemover = 0;
-        
-        DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();    
+    
+        DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
         
         for(int i = 0; i <= lista.size(); i++){
             if(i == tabelaClientes.getSelectedRow()){
-                itemRemover = tabelaClientes.getSelectedRow();
-                itensLista.removeRow(itemRemover);// remover do 
-                lista.remove(itemRemover);
+                int itemRemover = tabelaClientes.getSelectedRow();// a linha para apagar
+                itensLista.removeRow(itemRemover);// remover do jtable.
+                lista.remove(itemRemover);// remover do List
                 
             }
-        }
-        
-        System.out.println(lista);
-        System.out.println(lista.size());        
+        }    
     }//GEN-LAST:event_ExcluirActionPerformed
+
+    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
+        
+        DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
+        for(int i = 0; i <= lista.size(); i++){
+            if(i == tabelaClientes.getSelectedRow()){
+                Cliente clieteEditavel = new Cliente();
+                clieteEditavel = lista.get(i);
+                ModificarCliente modificar = new ModificarCliente();
+                modificar.preencher(clieteEditavel);
+                getParent().add(modificar); // comando para abri o modificar, pois ele retorna o container do componente atual, no caso, de um internalframe
+                modificar.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_modificarActionPerformed
 
     public void loadJTable(){
         DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
+        
         dao = new ClienteDAO();
         lista = dao.list();
-        if(lista == null){
+        
+        if(lista == null){ //Mensagem de Erro
             JOptionPane.showMessageDialog(null, "Nao tem Cadastro");
         }else{
-            for(Cliente entity: lista) {
-                Object[] insered = new Object[4];
-                insered[0] = entity.getSituacao(); 
-                insered[1] = entity.getNome();
-                insered[2] = entity.getSobrenome();
-                insered[3] = entity.getCpf();
-                itensLista.addRow(insered);
+            for(Cliente entity: lista) { //adiciona os intens desejado na JTable
+                Object[] insered = new Object[4]; //cria a colunas
+                insered[0] = entity.getSituacao(); //preenche a colunas
+                insered[1] = entity.getNome(); //preenche a colunas
+                insered[2] = entity.getSobrenome(); //preenche a colunas
+                insered[3] = entity.getCpf(); //preenche a colunas
+                itensLista.addRow(insered);//inseri
             }
         }   
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Alterar;
     private javax.swing.JButton Excluir;
     private javax.swing.JButton chekIn;
     private javax.swing.JButton chekOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton modificar;
     private javax.swing.JTable tabelaClientes;
     // End of variables declaration//GEN-END:variables
 }

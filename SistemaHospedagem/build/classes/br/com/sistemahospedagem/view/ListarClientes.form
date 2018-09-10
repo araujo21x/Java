@@ -52,7 +52,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="chekOut" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="Alterar" min="-2" max="-2" attributes="0"/>
+                  <Component id="modificar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="Excluir" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
@@ -70,7 +70,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="chekIn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="chekOut" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Alterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="modificar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Excluir" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -143,10 +143,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExcluirActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="Alterar">
+        <Component class="javax.swing.JButton" name="modificar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Alterar"/>
+            <Property name="text" type="java.lang.String" value="Modificar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modificarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="chekIn">
           <Properties>

@@ -6,9 +6,9 @@ import java.util.List;
 
 public class ClienteDAO {
    
-    private static List<Cliente> listaClientes;
+    private static List<Cliente> listaClientes;// inicializando
 
-    public ClienteDAO() {
+    public ClienteDAO() {//inicializando construct
 
     }
     
@@ -25,5 +25,9 @@ public class ClienteDAO {
     
     public void remove(int index) {
         listaClientes.remove(index);
+    }
+    
+    public void modificar(int index){
+        
     }
 }
