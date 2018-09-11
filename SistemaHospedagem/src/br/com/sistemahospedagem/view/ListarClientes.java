@@ -129,10 +129,8 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
         
         for(int i = 0; i <= lista.size(); i++){
             if(i == tabelaClientes.getSelectedRow()){
-                int itemRemover = tabelaClientes.getSelectedRow();// a linha para apagar
-                itensLista.removeRow(itemRemover);// remover do jtable.
-                lista.remove(itemRemover);// remover do List
-                
+                itensLista.removeRow(i);// remover do jtable.
+                lista.remove(i);// remover do List
             }
         }    
     }//GEN-LAST:event_ExcluirActionPerformed
@@ -142,10 +140,18 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
         DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
         for(int i = 0; i <= lista.size(); i++){
             if(i == tabelaClientes.getSelectedRow()){
+                
+                //pegar os valores do que sera editado
                 Cliente clieteEditavel = new Cliente();
                 clieteEditavel = lista.get(i);
-                ModificarCliente modificar = new ModificarCliente();
-                modificar.preencher(clieteEditavel);
+                
+                //excluir o selecionado
+                itensLista.removeRow(i);// remover do jtable.
+                lista.remove(i);// remover do List
+                
+                //mandar dados e inicializar a janela
+                ModificarCliente modificar = new ModificarCliente();//criar janela de editar
+                modificar.preencher(clieteEditavel);//pegar dados
                 getParent().add(modificar); // comando para abri o modificar, pois ele retorna o container do componente atual, no caso, de um internalframe
                 modificar.setVisible(true);
             }

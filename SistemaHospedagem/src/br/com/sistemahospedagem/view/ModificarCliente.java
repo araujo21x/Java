@@ -7,7 +7,6 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
 
     public ModificarCliente() {
         initComponents();
-        //preencher();
     }
 
     @SuppressWarnings("unchecked")
@@ -28,7 +27,7 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        cadastrar = new javax.swing.JButton();
+        Editar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -63,7 +62,7 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
         setResizable(true);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Cadastro de Cliente");
+        jLabel1.setText("Editar de Cliente");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Nome:");
@@ -89,11 +88,11 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
         jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setText("Celular:");
 
-        cadastrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        cadastrar.setText("Cadastrar");
-        cadastrar.addActionListener(new java.awt.event.ActionListener() {
+        Editar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Editar.setText("Editar");
+        Editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastrarActionPerformed(evt);
+                EditarActionPerformed(evt);
             }
         });
 
@@ -194,7 +193,7 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
                                 .addComponent(corCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cadastrar)
+                                    .addComponent(Editar)
                                     .addComponent(jLabel20))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(placaCarro))
@@ -260,15 +259,14 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(sobrenome))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel19))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(183, 183, 183)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addComponent(jLabel19)
+                        .addGap(0, 523, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(196, 196, 196)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,7 +336,7 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cancelar)
-                            .addComponent(cadastrar))
+                            .addComponent(Editar))
                         .addContainerGap())))
         );
 
@@ -400,7 +398,7 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
         placaCarro.setText(cliente.getPlacaCarro());
         
     }
-    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
+    private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
 
         Cliente novoCliente = new Cliente();
 
@@ -420,7 +418,6 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
         novoCliente.setModelo(modelo.getText());
         novoCliente.setCorCarro(corCarro.getText());
         novoCliente.setPlacaCarro(placaCarro.getText());
-        novoCliente.setSituacao("Inativo");
         
         ClienteDAO dao = new ClienteDAO();
         dao.save(novoCliente);
@@ -438,11 +435,11 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
         }
          */
 
-    }//GEN-LAST:event_cadastrarActionPerformed
-
+    }//GEN-LAST:event_EditarActionPerformed
+                        
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Editar;
     private javax.swing.JTextField bairro;
-    private javax.swing.JButton cadastrar;
     private javax.swing.JButton cancelar;
     private javax.swing.JFormattedTextField celular;
     private javax.swing.JFormattedTextField cep;
