@@ -437,22 +437,20 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
 
-       
-
         for (int i = 0; i <= 10; i++) {
             Cliente novoCliente = new Cliente();
             novoCliente.setNome("teste"+i);
             novoCliente.setSobrenome("teste"+i);
-            novoCliente.setNascimento("teste"+i);
+            novoCliente.setNascimento(nascimento.getText());
             novoCliente.setSexo((String) sexo.getSelectedItem());
-            novoCliente.setCpf("teste"+i);
+            novoCliente.setCpf(cpf.getText());
             novoCliente.setRua("teste"+i);
             novoCliente.setBairro("teste"+i);
             novoCliente.setCidade("teste"+i);
             novoCliente.setNumeroCasa("teste"+i);
-            novoCliente.setCep("teste"+i);
+            novoCliente.setCep(cep.getText());
             novoCliente.setEstado((String) estado.getSelectedItem());
-            novoCliente.setCelular("teste"+i);
+            novoCliente.setCelular(celular.getText());
             novoCliente.setEmail("teste"+i);
             novoCliente.setModelo("teste"+i);
             novoCliente.setCorCarro("teste"+i);
@@ -460,6 +458,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
             novoCliente.setSituacao("Inativo");
             ClienteDAO dao = new ClienteDAO();
             dao.save(novoCliente);
+            System.out.println(novoCliente);
         }
 
 

@@ -366,20 +366,38 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
         
         nome.setText(cliente.getNome());
         sobrenome.setText(cliente.getSobrenome());
-        nascimento.setText(cliente.getNascimento());
-        //(String)sexo.setSelectedItem();
-        cpf.setText("");
-        rua.setText("");
-        bairro.setText("");
-        cidade.setText("");
-        numeroCasa.setText("");
-        cep.setText("");
-        //(String)estado.setSelectedItem();
-        celular.setText("");
-        email.setText("");
-        modelo.setText("");
-        corCarro.setText("");
-        placaCarro.setText("");
+        sexo.setSelectedItem(cliente.getSexo());
+        
+        String cpfEditar = cliente.getCpf();//pegar dados do cpf, replace vai retirar os pontos
+        cpfEditar = cpfEditar.replace(".","");//fazer metodo bonitinho
+        cpfEditar = cpfEditar.replace("-","");//fazer metodo bonitinho
+        cpf.setText(cpfEditar);
+        
+        email.setText(cliente.getEmail());
+        
+        String celularEditar = cliente.getCelular();
+        celularEditar = celularEditar.replace("(","");
+        celularEditar = celularEditar.replace(")","");
+        celularEditar = celularEditar.replace("-","");
+        celular.setText(celularEditar);
+        
+        String nascimentoEditar = cliente.getNascimento();
+        nascimentoEditar = nascimentoEditar.replace("/","");
+        nascimento.setText(nascimentoEditar);
+        
+        rua.setText(cliente.getRua());
+        numeroCasa.setText(cliente.getNumeroCasa());
+        bairro.setText(cliente.getBairro());
+        cidade.setText(cliente.getCidade());
+        
+        String cepEditar = cliente.getCep();
+        cepEditar = cepEditar.replace("-","");
+        cep.setText(cepEditar);
+        
+        estado.setSelectedItem(cliente.getEstado());
+        modelo.setText(cliente.getModelo());
+        corCarro.setText(cliente.getCorCarro());
+        placaCarro.setText(cliente.getPlacaCarro());
         
     }
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
