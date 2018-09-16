@@ -30,9 +30,27 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
         chekOut = new javax.swing.JButton();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel1.setText("Clientes");
@@ -124,15 +142,19 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
-    
-        DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
-        
-        for(int i = 0; i <= lista.size(); i++){
-            if(i == tabelaClientes.getSelectedRow()){
-                itensLista.removeRow(i);// remover do jtable.
-                lista.remove(i);// remover do List
-            }
-        }    
+        int confirmacao = JOptionPane.showConfirmDialog(null,"Deseja excluir?",
+                "CUIDADE!!!", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE );
+        if(confirmacao == JOptionPane.YES_OPTION){
+            DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
+
+            for(int i = 0; i <= lista.size(); i++){
+                if(i == tabelaClientes.getSelectedRow()){
+                    itensLista.removeRow(i);// remover do jtable.
+                    lista.remove(i);// remover do List
+                }
+            }    
+        }
+            
     }//GEN-LAST:event_ExcluirActionPerformed
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
@@ -157,6 +179,14 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_modificarActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja sair?"
+                , "CUIDADO!!!", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE);
+        if(confirmacao == JOptionPane.YES_OPTION){
+            dispose();
+        }
+    }//GEN-LAST:event_formInternalFrameClosing
 
     public void loadJTable(){
         DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();

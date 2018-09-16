@@ -27,9 +27,14 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Login");
         setBackground(new java.awt.Color(0, 0, 0));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                fechamento(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -149,7 +154,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                         .addComponent(jLabel7)
                         .addGap(83, 83, 83))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -157,7 +162,7 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(267, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,6 +229,15 @@ public class TelaLogin extends javax.swing.JFrame {
     private void nickMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nickMouseClicked
         nick.setText("");
     }//GEN-LAST:event_nickMouseClicked
+
+    private void fechamento(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_fechamento
+        int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja Sair?",
+                "Atenção", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE);
+        if(confirmacao == JOptionPane.YES_OPTION){
+            JOptionPane.showMessageDialog(null, "Tchau!, Obrigado!!!");
+            dispose();
+        }
+    }//GEN-LAST:event_fechamento
 
     public static void main(String args[]) {
         try {

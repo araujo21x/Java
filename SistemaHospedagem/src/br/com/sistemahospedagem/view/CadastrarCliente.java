@@ -2,6 +2,7 @@ package br.com.sistemahospedagem.view;
 
 import br.com.sistemahospedagem.dao.ClienteDAO;
 import br.com.sistemahospedagem.model.Cliente;
+import javax.swing.JOptionPane;
 
 public class CadastrarCliente extends javax.swing.JInternalFrame {
 
@@ -57,9 +58,27 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
         numeroCasa = new javax.swing.JTextField();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Cadastro de Cliente");
@@ -281,7 +300,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
                                 .addGap(3, 3, 3)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(email))
+                                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel17)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -327,7 +346,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(183, 183, 183)
                                 .addComponent(jLabel1)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 208, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -431,8 +450,11 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_ruaMouseClicked
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        //Fechar janela
-        dispose();
+        int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja sair?",
+                "Cuidado", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE);
+        if(confirmacao == JOptionPane.YES_OPTION){
+            dispose();    
+        }
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
@@ -521,6 +543,14 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
     private void placaCarroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placaCarroMouseClicked
         placaCarro.setText("");
     }//GEN-LAST:event_placaCarroMouseClicked
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja fechar essa janela?",
+                "Atenção", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE);
+        if(confirmacao == JOptionPane.YES_OPTION){
+            dispose();
+        }
+    }//GEN-LAST:event_formInternalFrameClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bairro;
