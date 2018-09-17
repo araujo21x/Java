@@ -453,7 +453,8 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
         int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja sair?",
                 "Cuidado", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE);
         if(confirmacao == JOptionPane.YES_OPTION){
-            dispose();    
+            dispose();  
+            System.out.println(confirmacao);
         }
     }//GEN-LAST:event_cancelarActionPerformed
 
@@ -549,6 +550,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
                 "Atenção", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE);
         if(confirmacao == JOptionPane.YES_OPTION){
             dispose();
+            System.out.println(confirmacao);
         }
     }//GEN-LAST:event_formInternalFrameClosing
 
