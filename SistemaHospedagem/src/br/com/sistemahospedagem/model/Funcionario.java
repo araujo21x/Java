@@ -1,13 +1,17 @@
 package br.com.sistemahospedagem.model;
 public class Funcionario extends Pessoa{
+    private String cargo;
+    private Double salario;
+    private String diaPagamento;
     private String login;
     private String senha;
     private String entrada;
-    private String cargo;
-    private String diaPagamento;
     private String status;
-    private Double salario;
-   
+    
+    public Funcionario(){
+        
+    }
+    
     public String getEntrada() {
         return entrada;
     }
@@ -40,12 +44,28 @@ public class Funcionario extends Pessoa{
         this.status = status;
     }
 
-    public double getSalario() {
+    public Double getSalario() {
         return salario;
     }
 
-    public void setSalario(double salario) {
+    public void setSalario(Double salario) {
         this.salario = salario;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
     
 }

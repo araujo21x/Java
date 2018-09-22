@@ -1,35 +1,30 @@
 package br.com.sistemahospedagem.model;
 public class Quarto {
-    private Integer quantidadeCama;
-    private double diaria;
+    private Integer quantidadeCamaCasal;
+    private Integer quantidadeCamaSolteiro;
     private String tipoCama;
     private String ventilacao;
     private String status;
-    private String numero;
-    
-    public Quarto(Integer quantidadeCama, double diaria, String tipoCama, String ventilacao, String status, String numero){
-        this.quantidadeCama = quantidadeCama;
-        this.diaria = diaria;
-        this.tipoCama = tipoCama;
-        this.ventilacao = ventilacao;
-        this.status = status;
-        this.numero = numero;
+    private String numero;  
+
+    public Quarto() {
+         
     }
 
-    public Integer getQuantidadeCama() {
-        return quantidadeCama;
+    public Integer getQuantidadeCamaCasal() {
+        return quantidadeCamaCasal;
     }
 
-    public void setQuantidadeCama(Integer quantidadeCama) {
-        this.quantidadeCama = quantidadeCama;
+    public void setQuantidadeCamaCasal(Integer quantidadeCamaCasal) {
+        this.quantidadeCamaCasal = quantidadeCamaCasal;
     }
 
-    public double getDiaria() {
-        return diaria;
+    public Integer getQuantidadeCamaSolteiro() {
+        return quantidadeCamaSolteiro;
     }
 
-    public void setDiaria(double diaria) {
-        this.diaria = diaria;
+    public void setQuantidadeCamaSolteiro(Integer quantidadeCamaSolteiro) {
+        this.quantidadeCamaSolteiro = quantidadeCamaSolteiro;
     }
 
     public String getTipoCama() {
@@ -63,5 +58,6 @@ public class Quarto {
     public void setNumero(String numero) {
         this.numero = numero;
     }
+
     
 }

@@ -5,17 +5,17 @@ import java.util.Objects;
 public abstract class Pessoa {
     private String nome;
     private String sobrenome;
-    private String nascimento;
     private String sexo;
     private String cpf;
+    private String email;
+    private String celular;
+    private String nascimento;
     private String rua;
+    private String numeroCasa;
     private String bairro;
     private String cidade;
-    private String numeroCasa;
     private String cep;
     private String estado;
-    private String celular;
-    private String email;
     private String saude;
 
     public String getNome() {

@@ -15,18 +15,25 @@ import java.util.List;
  */
 public class FuncionarioDAO {
     
-    private final List<Funcionario> listaFuncionario = new ArrayList<>();
+    private static List<Funcionario> listaFuncionario;// inicializando
     
-    public FuncionarioDAO(){ 
+    public FuncionarioDAO(){//inicializando construct
     
     }
     
     public void save(Funcionario novoFuncionario){
+        if(listaFuncionario == null){
+            listaFuncionario = new ArrayList<>();
+        }
         listaFuncionario.add(novoFuncionario);
     }
     
     public List<Funcionario> list(){
         return listaFuncionario;
+    }
+    
+    public void remover(int index){
+        listaFuncionario.remove(index);
     }
     
 }

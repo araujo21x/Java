@@ -27,7 +27,10 @@ public class ClienteDAO {
         listaClientes.remove(index);
     }
     
-    public void modificar(int index){
+    /*public Cliente dadosCliente(int index){
+        Cliente dados = new Cliente();
+        dados = listaClientes.get(index);
         
-    }
+        return dados;        
+    }*/
 }
