@@ -2,14 +2,10 @@ package br.com.sistemahospedagem.model;
 public class Consumo {
     private String tipo;
     private Integer quantidade;
-    private double valor;
-    private double subtotal;
+    private Double valor;
+    private Double subtotal;
     
-    public Consumo(String tipo, Integer quantidade, double valor, double subtotal){
-        this.tipo = tipo;
-        this.quantidade = quantidade;
-        this.subtotal = subtotal;
-        this.valor = valor;
+    public Consumo(){
         
     }
 
@@ -29,7 +25,7 @@ public class Consumo {
         this.quantidade = quantidade;
     }
 
-    public double getValor() {
+    public Double getValor() {
         return valor;
     }
 
@@ -37,11 +33,11 @@ public class Consumo {
         this.valor = valor;
     }
 
-    public double getSubtotal() {
+    public Double getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
+    public void setSubtotal() {
+        this.subtotal = quantidade*valor;
     }
 }

@@ -26,4 +26,5 @@ public class CheckInDAO {
     public void remove(int index) {
         listaCheckIn.remove(index);
     }
+    
 }

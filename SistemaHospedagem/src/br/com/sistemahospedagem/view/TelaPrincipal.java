@@ -18,6 +18,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         listarClientes = new javax.swing.JMenu();
         cadastrarCliente = new javax.swing.JMenuItem();
         listarCliente = new javax.swing.JMenuItem();
+        clienteAtivos = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenu();
         cadastrarQuartos = new javax.swing.JMenuItem();
         listarQuartos = new javax.swing.JMenuItem();
@@ -104,6 +105,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         listarClientes.add(listarCliente);
+
+        clienteAtivos.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
+        clienteAtivos.setText("Clientes Ativos");
+        clienteAtivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clienteAtivosActionPerformed(evt);
+            }
+        });
+        listarClientes.add(clienteAtivos);
 
         jMenuBar1.add(listarClientes);
 
@@ -246,10 +256,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         listaQuarto.setVisible(true);
     }//GEN-LAST:event_listarQuartosActionPerformed
 
+    private void clienteAtivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteAtivosActionPerformed
+        ClientesAtivos clientesAtivos = new ClientesAtivos();
+        jDesktopPane1.add(clientesAtivos);
+        clientesAtivos.setVisible(true);
+    }//GEN-LAST:event_clienteAtivosActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem cadastrarCliente;
     private javax.swing.JMenuItem cadastrarFuncionario;
     private javax.swing.JMenuItem cadastrarQuartos;
+    private javax.swing.JMenuItem clienteAtivos;
     private javax.swing.JMenuItem desenvolvedores;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu10;

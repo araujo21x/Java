@@ -1,8 +1,11 @@
 package br.com.sistemahospedagem.model;
 
+import br.com.sistemahospedagem.dao.ConsumoDAO;
+import java.util.List;
+
 public class CheckIn {
+    private ConsumoDAO daoConsumo;
     private Cliente cliente;
-    //private Consumo consumo;
     private Quarto quarto;
     private Integer dias;
     private Integer pessoas;
@@ -18,14 +21,6 @@ public class CheckIn {
     public void setCliente(Cliente clienteSelecionado) {
         this.cliente = clienteSelecionado;
     }
-
-    /*public Consumo getConsumo() {
-        return consumo;
-    }
-
-    public void setConsumo(Consumo consumo) {
-        this.consumo = consumo;
-    }*/
 
     public Quarto getQuarto() {
         return quarto;
@@ -59,4 +54,11 @@ public class CheckIn {
         this.quantidadeQuartos = quantidadeQuartos;
     }
 
+    public void setDaoConsumo(Consumo consumo) {
+        daoConsumo.save(consumo);
+    }
+    
+    public List<Consumo> getDaoConsumo(){
+        return daoConsumo.list();
+    }
 }

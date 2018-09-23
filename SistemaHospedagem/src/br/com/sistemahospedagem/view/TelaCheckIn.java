@@ -226,13 +226,18 @@ public class TelaCheckIn extends javax.swing.JInternalFrame {
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         Integer conversor;
         
+        DefaultTableModel itensLista = (DefaultTableModel) quartosDisponiveis.getModel();
         Cliente clienteSelecionado = new Cliente();
+        CheckIn novoCheckIn = new CheckIn();
         daoClientes = new ClienteDAO();
         listaClientes = daoClientes.list();
-        
         clienteSelecionado = listaClientes.get(indexCliente);
         
-        CheckIn novoCheckIn = new CheckIn();
+        for(int i = 0; i <= listaQuartos.size(); i++){
+            if(i == quartosDisponiveis.getSelectedRow()){
+                novoCheckIn.setQuarto(listaQuartos.get(i));
+            }
+        }
 
         conversor = Integer.parseInt((String)quantidadeDias.getSelectedItem());
         novoCheckIn.setDias(conversor);
@@ -240,11 +245,12 @@ public class TelaCheckIn extends javax.swing.JInternalFrame {
         novoCheckIn.setPessoas(conversor);
         conversor = Integer.parseInt((String)quantidadeQuartos.getSelectedItem());
         novoCheckIn.setQuantidadeQuartos(conversor);
-        novoCheckIn.setCliente(clienteSelecionado);        
-    
+        novoCheckIn.setCliente(clienteSelecionado);    
+        
+        
+        
         CheckInDAO daoCheckIn = new CheckInDAO();
         daoCheckIn.save(novoCheckIn);
-        System.out.println(daoCheckIn.list());
     }//GEN-LAST:event_confirmarActionPerformed
    
     private void loadJTable(){
