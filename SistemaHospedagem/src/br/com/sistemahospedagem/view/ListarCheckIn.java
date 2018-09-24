@@ -152,8 +152,11 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
         
         for(int i = 0; i <= listaCheckIn.size(); i++){
             if(i == tabelaClientes.getSelectedRow()){
+                JOptionPane.showMessageDialog(null,"Nome:"+listaCheckIn.get(i).getCliente().
+                        getNome()+" "+listaCheckIn.get(i).getCliente().getSobrenome()+" "
+                                + "Total a pagar:"+listaCheckIn.get(i).getTotaConta());
                 itensLista.removeRow(i);// remover do jtable.
-                listaCheckIn.remove(i);// remover do List
+                listaCheckIn.remove(i);// remover do List                
                 dispose();
             }
         }
