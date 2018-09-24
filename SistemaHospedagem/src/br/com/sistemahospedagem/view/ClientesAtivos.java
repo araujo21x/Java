@@ -27,7 +27,6 @@ public final class ClientesAtivos extends javax.swing.JInternalFrame {
         tabelaClientes = new javax.swing.JTable();
         modificarChekIn = new javax.swing.JButton();
         CheckOut = new javax.swing.JButton();
-        adicionarConsumo = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -62,12 +61,19 @@ public final class ClientesAtivos extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nome", "CPF", "Quarto", "OBS"
+                "Nome", "CPF", "Quarto", "Valor"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -80,11 +86,9 @@ public final class ClientesAtivos extends javax.swing.JInternalFrame {
 
         CheckOut.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         CheckOut.setText("Check-Out");
-
-        adicionarConsumo.setText("AdicionarConsumo");
-        adicionarConsumo.addActionListener(new java.awt.event.ActionListener() {
+        CheckOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adicionarConsumoActionPerformed(evt);
+                CheckOutActionPerformed(evt);
             }
         });
 
@@ -99,13 +103,11 @@ public final class ClientesAtivos extends javax.swing.JInternalFrame {
                         .addGap(345, 345, 345)
                         .addComponent(jLabel3))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
+                        .addGap(259, 259, 259)
                         .addComponent(CheckOut)
-                        .addGap(36, 36, 36)
-                        .addComponent(adicionarConsumo)
-                        .addGap(31, 31, 31)
+                        .addGap(73, 73, 73)
                         .addComponent(modificarChekIn)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +119,6 @@ public final class ClientesAtivos extends javax.swing.JInternalFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CheckOut)
-                    .addComponent(adicionarConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(modificarChekIn))
                 .addContainerGap(151, Short.MAX_VALUE))
         );
@@ -148,38 +149,26 @@ public final class ClientesAtivos extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_formInternalFrameClosing
 
-    private void adicionarConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarConsumoActionPerformed
-        int i;
-        DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
-        AdicionarConsumo adicionarConsumo = new AdicionarConsumo();
-        
-        for(i = 0; i <= listaCheckIn.size(); i++){
-                if(i == tabelaClientes.getSelectedRow()){
-                    adicionarConsumo.receberIndex(i); 
-                    getParent().add(adicionarConsumo);
-                    adicionarConsumo.setVisible(true);   
-                }
-            }
-        if(adicionarConsumo.getConfirmacaoExclusao()){
-            itensLista.removeRow(i);
-            listaCheckIn.remove(i);    
-        }
-        
-    }//GEN-LAST:event_adicionarConsumoActionPerformed
+    private void CheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckOutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CheckOutActionPerformed
 
     public void loadJTable(){
         
         DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();//tabelaCliente e o nome da tabela
-
-        daoCheckIn = new CheckInDAO();
+        if(daoCheckIn == null){
+            daoCheckIn = new CheckInDAO();
+        }
+        
         listaCheckIn = daoCheckIn.list();
 
         if(listaCheckIn == null){ //Mensagem de Erro
             JOptionPane.showMessageDialog(null, "Nao tem Cadastro");
         }else{
             for(CheckIn entity: listaCheckIn) { //adiciona os intens desejado na JTable
+                 
                 Object[] insered = new Object[4]; //cria a colunas
-                insered[0] = entity.getCliente().getNome(); //preenche a colunas
+                insered[0] = entity. getCliente().getNome(); //preenche a colunas
                 insered[1] = entity.getCliente().getCpf(); //preenche a colunas
                 insered[2] = entity.getQuarto().getNumero(); //preenche a colunas
                 insered[3] = entity.getCliente().getObservacao(); //preenche a colunas
@@ -190,7 +179,6 @@ public final class ClientesAtivos extends javax.swing.JInternalFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CheckOut;
-    private javax.swing.JButton adicionarConsumo;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;

@@ -34,10 +34,7 @@ public class Consumo {
     }
 
     public Double getSubtotal() {
-        return subtotal;
+        return subtotal = quantidade*valor;
     }
 
-    public void setSubtotal() {
-        this.subtotal = quantidade*valor;
-    }
 }

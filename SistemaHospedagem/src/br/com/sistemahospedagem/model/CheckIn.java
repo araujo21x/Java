@@ -64,5 +64,4 @@ public class CheckIn {
         }
         ConsumoCliente.add(Consumonovo);  
     }
-    
 }
