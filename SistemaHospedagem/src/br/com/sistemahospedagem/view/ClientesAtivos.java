@@ -170,6 +170,7 @@ public final class ClientesAtivos extends javax.swing.JInternalFrame {
                 
                 CheckInEditavel = listaCheckIn.get(i);
                 modificar.receberDados(CheckInEditavel);//pegar dados
+                modificar.preencher();
                 
                 getParent().add(modificar); // comando para abri o modificar, pois ele retorna o container do componente atual, no caso, de um internalframe
                 modificar.setVisible(true);

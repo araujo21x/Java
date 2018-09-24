@@ -15,10 +15,10 @@ public class ModificarCheckIn extends javax.swing.JInternalFrame {
     private boolean confirmacaoExclusao = false;
     
     private List<Quarto> listaQuartos;
-    private List<Cliente> listaClientes;
+    //private List<Cliente> listaClientes;
     private QuartoDAO daoQuartos;
-    private ClienteDAO daoClientes;
-    private int indexCliente;
+    //private ClienteDAO daoClientes;
+    private CheckIn chekInModificado;
     
     public ModificarCheckIn(){
         initComponents();
@@ -204,11 +204,7 @@ public class ModificarCheckIn extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   
-    public void pegarIndexCliente(int index){ //pegar index  do clinete para fazer chek-in
-        indexCliente = index;
-    } 
-    
+
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja fechar essa janela?",
                 "Atenção", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE);
@@ -224,48 +220,68 @@ public class ModificarCheckIn extends javax.swing.JInternalFrame {
             dispose();
         }
     }//GEN-LAST:event_cancelarActionPerformed
-    private void receberDados(CheckIn checkIn){
+    public void receberDados(CheckIn checkIn){
+        chekInModificado = new CheckIn();        
+        chekInModificado = checkIn;        
+    }
+    public void preencher(){
+        String converso;
         
+        converso = Integer.toString(chekInModificado.getDias());
+        quantidadeDias.setSelectedItem(converso);
+        
+        converso = Integer.toString(chekInModificado.getPessoas());
+        quantidadePessoas.setSelectedItem(converso);
         
     }
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
-        Integer conversor;
-        Double ValorQuarto;
+        Integer confirmacao = JOptionPane.showConfirmDialog(null, "Deseja mudar dados do "
+                + "cliente", "ATENÇÂO!!!", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_OPTION);
         
         DefaultTableModel itensLista = (DefaultTableModel) quartosDisponiveis.getModel();
-        Cliente clienteSelecionado = new Cliente();
-        CheckIn novoCheckIn = new CheckIn();
-        daoClientes = new ClienteDAO();
-        listaClientes = daoClientes.list();
-        clienteSelecionado = listaClientes.get(indexCliente);
         
-        for(int i = 0; i <= listaQuartos.size(); i++){
-            if(i == quartosDisponiveis.getSelectedRow()){
-                novoCheckIn.setQuarto(listaQuartos.get(i));
+        if(confirmacao == JOptionPane.YES_OPTION){
+            Integer conversor;
+            Double ValorQuarto;
+            confirmacaoExclusao = true;
+            
+            Cliente clienteSelecionado = new Cliente();
+            /*daoClientes = new ClienteDAO();
+            listaClientes = daoClientes.list();*/
+            clienteSelecionado = chekInModificado.getCliente();
+        
+            for(int i = 0; i <= listaQuartos.size(); i++){
+                if(i == quartosDisponiveis.getSelectedRow()){
+                    chekInModificado.setQuarto(listaQuartos.get(i));
+                }
             }
-        }
 
-        conversor = Integer.parseInt((String)quantidadeDias.getSelectedItem());
-        novoCheckIn.setDias(conversor);
-        conversor = Integer.parseInt((String)quantidadePessoas.getSelectedItem());
-        novoCheckIn.setPessoas(conversor);
-        conversor = Integer.parseInt((String)quantidadeQuartos.getSelectedItem());
-        novoCheckIn.setQuantidadeQuartos(conversor);
-        novoCheckIn.setCliente(clienteSelecionado);
+            conversor = Integer.parseInt((String)quantidadeDias.getSelectedItem());
+            chekInModificado.setDias(conversor);
+            conversor = Integer.parseInt((String)quantidadePessoas.getSelectedItem());
+            chekInModificado.setPessoas(conversor);
+            conversor = Integer.parseInt((String)quantidadeQuartos.getSelectedItem());
+            chekInModificado.setQuantidadeQuartos(conversor);
+            chekInModificado.setCliente(clienteSelecionado);
         
-        if(novoCheckIn.getQuarto().getVentilacao().equals("Ventilador")){
-            ValorQuarto = (45 * (double)novoCheckIn.getPessoas()) * (double)novoCheckIn.getDias();
-        }else{//Ar
-            ValorQuarto = (50 * (double)novoCheckIn.getPessoas()) * (double)novoCheckIn.getDias();
+            if(chekInModificado.getQuarto().getVentilacao().equals("Ventilador")){
+                ValorQuarto = (45 * (double)chekInModificado.getPessoas()) * (double)chekInModificado.getDias();
+            }else{//Ar
+                ValorQuarto = (50 * (double)chekInModificado.getPessoas()) * (double)chekInModificado.getDias();
+            }
+        
+            chekInModificado.setTotaConta(ValorQuarto);
+        
+        
+            CheckInDAO daoCheckIn = new CheckInDAO();
+            daoCheckIn.save(chekInModificado);    
         }
         
-        novoCheckIn.setTotaConta(ValorQuarto);
         
-        
-        CheckInDAO daoCheckIn = new CheckInDAO();
-        daoCheckIn.save(novoCheckIn);
     }//GEN-LAST:event_confirmarActionPerformed
-   
+    public boolean getConfirmacaoExclusao(){
+        return confirmacaoExclusao;
+    }
     private void loadJTable(){
         
         DefaultTableModel itensLista = (DefaultTableModel) quartosDisponiveis.getModel();
