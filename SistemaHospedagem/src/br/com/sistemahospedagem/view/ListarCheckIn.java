@@ -25,9 +25,9 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tabelaClientes = new javax.swing.JTable();
-        modificarChekIn = new javax.swing.JButton();
-        CheckOut = new javax.swing.JButton();
         adicionarConsumo = new javax.swing.JButton();
+        CheckOut = new javax.swing.JButton();
+        modificarCheckIn = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -75,11 +75,11 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
         });
         jScrollPane4.setViewportView(tabelaClientes);
 
-        modificarChekIn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        modificarChekIn.setText("Modificar ChekIn");
-        modificarChekIn.addActionListener(new java.awt.event.ActionListener() {
+        adicionarConsumo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        adicionarConsumo.setText("ADD Consumo");
+        adicionarConsumo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarChekInActionPerformed(evt);
+                adicionarConsumoActionPerformed(evt);
             }
         });
 
@@ -91,10 +91,10 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
             }
         });
 
-        adicionarConsumo.setText("ADDConsumo");
-        adicionarConsumo.addActionListener(new java.awt.event.ActionListener() {
+        modificarCheckIn.setText("Editar");
+        modificarCheckIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adicionarConsumoActionPerformed(evt);
+                modificarCheckInActionPerformed(evt);
             }
         });
 
@@ -112,10 +112,10 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
                         .addGap(259, 259, 259)
                         .addComponent(CheckOut)
                         .addGap(18, 18, 18)
-                        .addComponent(adicionarConsumo)
+                        .addComponent(modificarCheckIn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(modificarChekIn)))
-                .addContainerGap(242, Short.MAX_VALUE))
+                        .addComponent(adicionarConsumo)))
+                .addContainerGap(319, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,8 +127,8 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CheckOut)
-                    .addComponent(modificarChekIn)
-                    .addComponent(adicionarConsumo))
+                    .addComponent(adicionarConsumo)
+                    .addComponent(modificarCheckIn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(151, Short.MAX_VALUE))
         );
 
@@ -173,37 +173,15 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_CheckOutActionPerformed
 
-    private void modificarChekInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarChekInActionPerformed
-
-        DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
-        for(int i = 0; i <= listaCheckIn.size(); i++){
-            if(i == tabelaClientes.getSelectedRow()){                
-                CheckIn CheckInEditavel = new CheckIn();
-                ModificarCheckIn modificar = new ModificarCheckIn();
-                CheckInEditavel = listaCheckIn.get(i);
-                modificar.receberDados(CheckInEditavel);
-                modificar.preencher();
-                
-                getParent().add(modificar);
-                modificar.setVisible(true);
-                
-                itensLista.removeRow(i);
-                listaCheckIn.remove(i);
-
-                dispose();
-            } 
-        }
-    }//GEN-LAST:event_modificarChekInActionPerformed
-
     private void adicionarConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarConsumoActionPerformed
+
         DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
         for(int i = 0; i <= listaCheckIn.size(); i++){
             if(i == tabelaClientes.getSelectedRow()){                
                 CheckIn CheckInEditavel = new CheckIn();
-                ModificarCheckIn modificar = new ModificarCheckIn();
+                CadastrarConsumo modificar = new CadastrarConsumo();
                 CheckInEditavel = listaCheckIn.get(i);
                 modificar.receberDados(CheckInEditavel);
-                modificar.preencher();
                 
                 getParent().add(modificar);
                 modificar.setVisible(true);
@@ -215,6 +193,27 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
             } 
         }
     }//GEN-LAST:event_adicionarConsumoActionPerformed
+
+    private void modificarCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarCheckInActionPerformed
+        DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
+        for(int i = 0; i <= listaCheckIn.size(); i++){
+            if(i == tabelaClientes.getSelectedRow()){                
+                CheckIn CheckInEditavel = new CheckIn();
+                ModificarCheckIn modificar = new ModificarCheckIn();
+                CheckInEditavel = listaCheckIn.get(i);
+                modificar.receberDados(CheckInEditavel);
+                modificar.preencher();
+                
+                getParent().add(modificar);
+                modificar.setVisible(true);
+                
+                itensLista.removeRow(i);
+                listaCheckIn.remove(i);
+
+                dispose();
+            } 
+        }
+    }//GEN-LAST:event_modificarCheckInActionPerformed
     public void loadJTable(){
         
         DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();//tabelaCliente e o nome da tabela
@@ -242,7 +241,7 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JButton modificarChekIn;
+    private javax.swing.JButton modificarCheckIn;
     private javax.swing.JTable tabelaClientes;
     // End of variables declaration//GEN-END:variables
 }

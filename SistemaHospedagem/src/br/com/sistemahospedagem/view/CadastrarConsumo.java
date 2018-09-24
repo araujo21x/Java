@@ -1,25 +1,16 @@
 package br.com.sistemahospedagem.view;
 
 import br.com.sistemahospedagem.dao.CheckInDAO;
-import br.com.sistemahospedagem.dao.QuartoDAO;
 import br.com.sistemahospedagem.model.CheckIn;
-import br.com.sistemahospedagem.model.Cliente;
-import br.com.sistemahospedagem.model.Quarto;
-import java.util.List;
+import br.com.sistemahospedagem.model.Consumo;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class CadastrarConsumo extends javax.swing.JInternalFrame {
     
-    private boolean confirmacaoExclusao = false;
-    
-    private List<Quarto> listaQuartos;
-    private QuartoDAO daoQuartos;
     private CheckIn chekInModificado;
     
     public CadastrarConsumo(){
         initComponents();
-        loadJTable();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -28,14 +19,13 @@ public class CadastrarConsumo extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        cancelar = new javax.swing.JButton();
         confirmar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        saude = new javax.swing.JTextField();
-        quantidadeDias = new javax.swing.JComboBox<>();
+        quantidadeConsumo = new javax.swing.JTextField();
+        tipoConsumo = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        quantidadePessoas = new javax.swing.JComboBox<>();
+        valorUnitario = new javax.swing.JTextField();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -62,15 +52,7 @@ public class CadastrarConsumo extends javax.swing.JInternalFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Check In");
-
-        cancelar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        cancelar.setText("Cancelar");
-        cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelarActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Consumo");
 
         confirmar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         confirmar.setText("Confirmar");
@@ -81,20 +63,15 @@ public class CadastrarConsumo extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel2.setText("Quantidade de Dias:");
+        jLabel2.setText("Tipo:");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel3.setText("Problemas de Saude:");
+        jLabel3.setText("Quantidade:");
 
-        saude.setText("Problemas de saude");
-
-        quantidadeDias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
+        tipoConsumo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Almoço", "Janta", "Agua", "Suco", "Refri", "Outros" }));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel4.setText("Quantidade de Pessoas:");
-
-        quantidadePessoas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        quantidadePessoas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
+        jLabel4.setText("Valor Unitario:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,29 +80,27 @@ public class CadastrarConsumo extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(251, 251, 251)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(quantidadeDias, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tipoConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(quantidadePessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(valorUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(cancelar)
-                                        .addGap(141, 141, 141)
-                                        .addComponent(confirmar))
-                                    .addComponent(saude, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(597, Short.MAX_VALUE))
+                                .addComponent(quantidadeConsumo))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addComponent(confirmar)))
+                .addContainerGap(740, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,18 +110,16 @@ public class CadastrarConsumo extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(quantidadeDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipoConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(quantidadePessoas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(valorUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(saude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelar)
-                    .addComponent(confirmar))
-                .addGap(368, 368, 368))
+                    .addComponent(quantidadeConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(confirmar)
+                .addContainerGap())
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -155,7 +128,7 @@ public class CadastrarConsumo extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,98 +145,38 @@ public class CadastrarConsumo extends javax.swing.JInternalFrame {
             dispose();
         }
     }//GEN-LAST:event_formInternalFrameClosing
-
-    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja fechar essa janela?",
-            "Atenção", JOptionPane.YES_OPTION, JOptionPane.WARNING_MESSAGE);
-        if(confirmacao == JOptionPane.YES_OPTION){
-            dispose();
-        }
-    }//GEN-LAST:event_cancelarActionPerformed
     public void receberDados(CheckIn checkIn){
         chekInModificado = new CheckIn();        
         chekInModificado = checkIn;        
     }
-    public void preencher(){
-        String converso;
-        
-        converso = Integer.toString(chekInModificado.getDias());
-        quantidadeDias.setSelectedItem(converso);
-        
-        converso = Integer.toString(chekInModificado.getPessoas());
-        quantidadePessoas.setSelectedItem(converso);
-        
-    }
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         Integer confirmacao = JOptionPane.showConfirmDialog(null, "Deseja mudar dados do "
                 + "cliente", "ATENÇÂO!!!", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_OPTION);
-        
-        DefaultTableModel itensLista = (DefaultTableModel) quartosDisponiveis.getModel();
-        
+               
         if(confirmacao == JOptionPane.YES_OPTION){
             Integer conversor;
-            Double ValorQuarto;
-            confirmacaoExclusao = true;
-            
-            Cliente clienteSelecionado = new Cliente();
-            clienteSelecionado = chekInModificado.getCliente();
-        
-            for(int i = 0; i <= listaQuartos.size(); i++){
-                if(i == quartosDisponiveis.getSelectedRow()){
-                    chekInModificado.setQuarto(listaQuartos.get(i));
-                }
-            }
+            Double valorTotal;
 
-            conversor = Integer.parseInt((String)quantidadeDias.getSelectedItem());
-            chekInModificado.setDias(conversor);
-            conversor = Integer.parseInt((String)quantidadePessoas.getSelectedItem());
-            chekInModificado.setPessoas(conversor);
-            conversor = Integer.parseInt((String)quantidadeQuartos.getSelectedItem());
-            chekInModificado.setQuantidadeQuartos(conversor);
-            chekInModificado.setCliente(clienteSelecionado);
-        
-            if(chekInModificado.getQuarto().getVentilacao().equals("Ventilador")){
-                ValorQuarto = (45 * (double)chekInModificado.getPessoas()) * (double)chekInModificado.getDias();
-            }else{//Ar
-                ValorQuarto = (50 * (double)chekInModificado.getPessoas()) * (double)chekInModificado.getDias();
-            }
-        
-            chekInModificado.setTotaConta(ValorQuarto);
-        
-        
+            Consumo novoConsumo = new Consumo();
+            
+            novoConsumo.setTipo((String)tipoConsumo.getSelectedItem());
+            conversor = Integer.parseInt(quantidadeConsumo.getText());
+            novoConsumo.setQuantidade(conversor);
+            valorTotal = Double.parseDouble(valorUnitario.getText());
+            novoConsumo.setValor(valorTotal);
+           
+            chekInModificado.setConsumoCliente(novoConsumo);
+            valorTotal = chekInModificado.getTotaConta() + novoConsumo.getSubtotal();
+            chekInModificado.setTotaConta(valorTotal);
+
             CheckInDAO daoCheckIn = new CheckInDAO();
             daoCheckIn.save(chekInModificado);    
         }
         
         
     }//GEN-LAST:event_confirmarActionPerformed
-    public boolean getConfirmacaoExclusao(){
-        return confirmacaoExclusao;
-    }
-    private void loadJTable(){
-        
-        DefaultTableModel itensLista = (DefaultTableModel) quartosDisponiveis.getModel();
-        
-        daoQuartos = new QuartoDAO();
-        listaQuartos = daoQuartos.list();
-        
-        if(listaQuartos == null){ //Mensagem de Erro
-            JOptionPane.showMessageDialog(null, "Nao tem Cadastro");
-        }else{
-            for(Quarto entity: listaQuartos) { //adiciona os intens desejado na JTable
-                if(entity.getStatus().equals("Inativo")){
-                    Object[] insered = new Object[4]; //cria a colunas
-                    insered[0] = entity.getNumero();
-                    insered[1] = entity.getVentilacao(); //preenche a colunas
-                    insered[2] = entity.getQuantidadeCamaCasal(); //preenche a colunas
-                    insered[3] = entity.getQuantidadeCamaSolteiro(); //preenche a colunas
-                    itensLista.addRow(insered);//inseri
-                }
-            }
-        }   
-    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cancelar;
     private javax.swing.JButton confirmar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -271,8 +184,8 @@ public class CadastrarConsumo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> quantidadeDias;
-    private javax.swing.JComboBox<String> quantidadePessoas;
-    private javax.swing.JTextField saude;
+    private javax.swing.JTextField quantidadeConsumo;
+    private javax.swing.JComboBox<String> tipoConsumo;
+    private javax.swing.JTextField valorUnitario;
     // End of variables declaration//GEN-END:variables
 }

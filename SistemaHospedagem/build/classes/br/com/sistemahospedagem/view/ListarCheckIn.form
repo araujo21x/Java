@@ -64,12 +64,12 @@
                               <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
                               <Component id="CheckOut" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="adicionarConsumo" min="-2" max="-2" attributes="0"/>
+                              <Component id="modificarCheckIn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="modificarChekIn" min="-2" max="-2" attributes="0"/>
+                              <Component id="adicionarConsumo" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="242" max="32767" attributes="0"/>
+                      <EmptySpace pref="319" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -83,8 +83,8 @@
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="CheckOut" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modificarChekIn" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="adicionarConsumo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="modificarCheckIn" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="151" max="32767" attributes="0"/>
                   </Group>
@@ -148,15 +148,15 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="modificarChekIn">
+            <Component class="javax.swing.JButton" name="adicionarConsumo">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Modificar ChekIn"/>
+                <Property name="text" type="java.lang.String" value="ADD Consumo"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modificarChekInActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adicionarConsumoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="CheckOut">
@@ -170,12 +170,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CheckOutActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="adicionarConsumo">
+            <Component class="javax.swing.JButton" name="modificarCheckIn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="ADDConsumo"/>
+                <Property name="text" type="java.lang.String" value="Editar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adicionarConsumoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modificarCheckInActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
