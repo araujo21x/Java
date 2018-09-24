@@ -170,7 +170,8 @@ public class CadastrarConsumo extends javax.swing.JInternalFrame {
             chekInModificado.setTotaConta(valorTotal);
 
             CheckInDAO daoCheckIn = new CheckInDAO();
-            daoCheckIn.save(chekInModificado);    
+            daoCheckIn.save(chekInModificado);
+            dispose();
         }
         
         

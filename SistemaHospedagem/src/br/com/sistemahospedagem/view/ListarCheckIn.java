@@ -207,9 +207,10 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
                 getParent().add(modificar);
                 modificar.setVisible(true);
                 
+                
                 itensLista.removeRow(i);
                 listaCheckIn.remove(i);
-
+                
                 dispose();
             } 
         }

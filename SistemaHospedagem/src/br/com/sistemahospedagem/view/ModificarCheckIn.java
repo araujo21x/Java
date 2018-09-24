@@ -269,7 +269,8 @@ public class ModificarCheckIn extends javax.swing.JInternalFrame {
         
         
             CheckInDAO daoCheckIn = new CheckInDAO();
-            daoCheckIn.save(chekInModificado);    
+            daoCheckIn.save(chekInModificado);  
+            dispose();
         }
         
         
