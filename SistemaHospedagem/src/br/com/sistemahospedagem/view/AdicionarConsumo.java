@@ -11,7 +11,8 @@ public class AdicionarConsumo extends javax.swing.JInternalFrame {
     private CheckInDAO daoCheckInDAO;
     private List<CheckIn> listaCheckIn;
     private CheckIn checkInAddConsumo;
-
+    private boolean confirmacaoExclusao = false;
+    
     public AdicionarConsumo(){
         initComponents();
     }
@@ -185,28 +186,36 @@ public class AdicionarConsumo extends javax.swing.JInternalFrame {
         this.indexCheckIn = index;
     }
     private void adicionarConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarConsumoActionPerformed
-        Double conversoDouble;
-        Integer conversoInteger;
+        Integer confirmacao = JOptionPane.showConfirmDialog(null, "Deseja mudar dados do "
+                + "cliente", "ATENÇÂO!!!", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_OPTION);
         
-        daoCheckInDAO = new CheckInDAO();
-        listaCheckIn = daoCheckInDAO.list();
-        checkInAddConsumo = new CheckIn();
-        Consumo novoConsumo = new Consumo();
-            
-        novoConsumo.setTipo((String) tipoConsumo.getSelectedItem());
-        conversoDouble = Double.parseDouble(precoProduto.getText());
-        novoConsumo.setValor(conversoDouble);
-        conversoInteger = Integer.parseInt(quantidadeProduto.getText());
-        novoConsumo.setQuantidade(conversoInteger);
-        
-        checkInAddConsumo = listaCheckIn.get(indexCheckIn);
-        checkInAddConsumo.setDaoConsumo(novoConsumo);
-        System.out.println(checkInAddConsumo);
-        listaCheckIn.set(indexCheckIn, checkInAddConsumo);
+        if(confirmacao == JOptionPane.YES_OPTION){
+            Double conversoDouble;
+            Integer conversoInteger;
+            daoCheckInDAO = new CheckInDAO();
+            listaCheckIn = daoCheckInDAO.list();
+            checkInAddConsumo = new CheckIn();
+            Consumo novoConsumo = new Consumo();
+
+            checkInAddConsumo = listaCheckIn.get(indexCheckIn);
+
+            novoConsumo.setTipo((String) tipoConsumo.getSelectedItem());
+            conversoDouble = Double.parseDouble(precoProduto.getText());
+            novoConsumo.setValor(conversoDouble);
+            conversoInteger = Integer.parseInt(quantidadeProduto.getText());
+            novoConsumo.setQuantidade(conversoInteger);
+
+            checkInAddConsumo.setConsumoCliente(novoConsumo);
+            daoCheckInDAO.save(checkInAddConsumo);
+            confirmacaoExclusao = true;
+            dispose();
+        }
         
         
     }//GEN-LAST:event_adicionarConsumoActionPerformed
-
+    public boolean getConfirmacaoExclusao(){
+        return confirmacaoExclusao;
+    }
     private void precoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precoProdutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_precoProdutoActionPerformed

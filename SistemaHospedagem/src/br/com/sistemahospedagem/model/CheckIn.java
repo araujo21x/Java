@@ -1,10 +1,10 @@
 package br.com.sistemahospedagem.model;
 
-import br.com.sistemahospedagem.dao.ConsumoDAO;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CheckIn {
-    private ConsumoDAO daoConsumo;
+    private List<Consumo> ConsumoCliente;
     private Cliente cliente;
     private Quarto quarto;
     private Integer dias;
@@ -54,11 +54,15 @@ public class CheckIn {
         this.quantidadeQuartos = quantidadeQuartos;
     }
 
-    public void setDaoConsumo(Consumo consumo) {
-        daoConsumo.save(consumo);
+    public List<Consumo> getConsumoCliente() {
+        return ConsumoCliente;
+    }
+
+    public void setConsumoCliente(Consumo Consumonovo) {
+        if(ConsumoCliente == null){
+            ConsumoCliente = new ArrayList<>();
+        }
+        ConsumoCliente.add(Consumonovo);  
     }
     
-    public List<Consumo> getDaoConsumo(){
-        return daoConsumo.list();
-    }
 }

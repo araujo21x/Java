@@ -149,16 +149,22 @@ public final class ClientesAtivos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameClosing
 
     private void adicionarConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarConsumoActionPerformed
+        int i;
         DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
+        AdicionarConsumo adicionarConsumo = new AdicionarConsumo();
         
-        for(int i = 0; i <= listaCheckIn.size(); i++){
+        for(i = 0; i <= listaCheckIn.size(); i++){
                 if(i == tabelaClientes.getSelectedRow()){
-                    AdicionarConsumo adicionarConsumo = new AdicionarConsumo();
                     adicionarConsumo.receberIndex(i); 
                     getParent().add(adicionarConsumo);
                     adicionarConsumo.setVisible(true);   
                 }
             }
+        if(adicionarConsumo.getConfirmacaoExclusao()){
+            itensLista.removeRow(i);
+            listaCheckIn.remove(i);    
+        }
+        
     }//GEN-LAST:event_adicionarConsumoActionPerformed
 
     public void loadJTable(){

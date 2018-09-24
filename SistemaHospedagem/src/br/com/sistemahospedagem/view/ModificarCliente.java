@@ -439,7 +439,7 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
     }
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
-        int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja mudar dados do "
+        Integer confirmacao = JOptionPane.showConfirmDialog(null, "Deseja mudar dados do "
                 + "cliente", "ATENÇÂO!!!", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_OPTION);
         
         if(confirmacao == JOptionPane.YES_OPTION){// confirmação do cadastro
