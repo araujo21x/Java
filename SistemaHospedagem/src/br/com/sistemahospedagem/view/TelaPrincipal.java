@@ -85,10 +85,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(153, 153, 153));
 
+        listarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemahospedagem/imagens/Cliente.png"))); // NOI18N
         listarClientes.setText("Cliente");
         listarClientes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         cadastrarCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        cadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemahospedagem/imagens/group_add.png"))); // NOI18N
         cadastrarCliente.setText("Cadastrar");
         cadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +100,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         listarClientes.add(cadastrarCliente);
 
         listarCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        listarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemahospedagem/imagens/user.png"))); // NOI18N
         listarCliente.setText("Listar");
         listarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +110,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         listarClientes.add(listarCliente);
 
         clienteAtivos.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
+        clienteAtivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemahospedagem/imagens/accept.png"))); // NOI18N
         clienteAtivos.setText("Clientes Ativos");
         clienteAtivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,10 +121,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(listarClientes);
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemahospedagem/imagens/quartos.png"))); // NOI18N
         jMenuItem2.setText("Quartos");
         jMenuItem2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         cadastrarQuartos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        cadastrarQuartos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemahospedagem/imagens/door_in.png"))); // NOI18N
         cadastrarQuartos.setText("Cadastrar");
         cadastrarQuartos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,6 +136,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem2.add(cadastrarQuartos);
 
         listarQuartos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        listarQuartos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemahospedagem/imagens/door_out.png"))); // NOI18N
         listarQuartos.setText("Listar");
         listarQuartos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,10 +147,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuItem2);
 
+        jMenu9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemahospedagem/imagens/funcionario.png"))); // NOI18N
         jMenu9.setText("Funcionario");
         jMenu9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         cadastrarFuncionario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        cadastrarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemahospedagem/imagens/vcard_add.png"))); // NOI18N
         cadastrarFuncionario.setText("Cadastrar");
         cadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +162,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu9.add(cadastrarFuncionario);
 
         listarFuncionarios.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        listarFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemahospedagem/imagens/vcard.png"))); // NOI18N
         listarFuncionarios.setText("Listar");
         listarFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,14 +173,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu9);
 
+        jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemahospedagem/imagens/funcionalides.png"))); // NOI18N
         jMenu10.setText("Funcionalidades");
         jMenu10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         desenvolvedores.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        desenvolvedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemahospedagem/imagens/compiuter.png"))); // NOI18N
         desenvolvedores.setText("Desenvolvedores");
+        desenvolvedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desenvolvedoresActionPerformed(evt);
+            }
+        });
         jMenu10.add(desenvolvedores);
 
         sair.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sistemahospedagem/imagens/cancel.png"))); // NOI18N
         sair.setText("Sair");
         sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,6 +279,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jDesktopPane1.add(clientesAtivos);
         clientesAtivos.setVisible(true);
     }//GEN-LAST:event_clienteAtivosActionPerformed
+
+    private void desenvolvedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desenvolvedoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_desenvolvedoresActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem cadastrarCliente;
