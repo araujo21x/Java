@@ -6,12 +6,12 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public final class ClientesAtivos extends javax.swing.JInternalFrame {
+public final class ListarCheckIn extends javax.swing.JInternalFrame {
 
     private List<CheckIn> listaCheckIn;
     private CheckInDAO daoCheckIn;
     
-    public ClientesAtivos() {
+    public ListarCheckIn() {
         initComponents();
         loadJTable();
     }
@@ -159,28 +159,22 @@ public final class ClientesAtivos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_CheckOutActionPerformed
 
     private void modificarChekInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarChekInActionPerformed
-        int i;
-        boolean confirmacaoExclusao = false;
-        
+
         DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
-        for( i = 0; i <= listaCheckIn.size(); i++){
+        for(int i = 0; i <= listaCheckIn.size(); i++){
             if(i == tabelaClientes.getSelectedRow()){                
                 CheckIn CheckInEditavel = new CheckIn();
-                ModificarCheckIn modificar = new ModificarCheckIn();//criar janela de editar
-                
+                ModificarCheckIn modificar = new ModificarCheckIn();
                 CheckInEditavel = listaCheckIn.get(i);
-                modificar.receberDados(CheckInEditavel);//pegar dados
+                modificar.receberDados(CheckInEditavel);
                 modificar.preencher();
                 
-                getParent().add(modificar); // comando para abri o modificar, pois ele retorna o container do componente atual, no caso, de um internalframe
+                getParent().add(modificar);
                 modificar.setVisible(true);
                 
-                confirmacaoExclusao = modificar.getConfirmacaoExclusao();
-            }
-        }
-        if(confirmacaoExclusao){
-            itensLista.removeRow(i);// remover do jtable.
-            listaCheckIn.remove(i);// remover do List
+                itensLista.removeRow(i);
+                listaCheckIn.remove(i);
+            } 
         }
     }//GEN-LAST:event_modificarChekInActionPerformed
     public void loadJTable(){

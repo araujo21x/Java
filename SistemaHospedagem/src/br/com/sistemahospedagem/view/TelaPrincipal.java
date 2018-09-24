@@ -257,7 +257,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_listarQuartosActionPerformed
 
     private void clienteAtivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteAtivosActionPerformed
-        ClientesAtivos clientesAtivos = new ClientesAtivos();
+        ListarCheckIn clientesAtivos = new ListarCheckIn();
         jDesktopPane1.add(clientesAtivos);
         clientesAtivos.setVisible(true);
     }//GEN-LAST:event_clienteAtivosActionPerformed

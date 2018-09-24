@@ -162,33 +162,21 @@ public final class ListarQuartos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_ExcluirFuncionarioActionPerformed
 
     private void modificarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarFuncionarioActionPerformed
-        int i = 0;
-        boolean confirmacaoExclusao = false;
-
         DefaultTableModel itensLista = (DefaultTableModel) tabelaQuartos.getModel();
-        for( i = 0; i <= lista.size(); i++){
+        for(int i = 0; i <= lista.size(); i++){
             if(i == tabelaQuartos.getSelectedRow()){
-
-                //pegar os valores do que sera editado
                 Quarto quartoEditavel = new Quarto();
+                ModificarQuarto modificar = new ModificarQuarto();
                 quartoEditavel = lista.get(i);
-
-                //mandar dados e inicializar a janela
-                ModificarQuarto modificar = new ModificarQuarto();//criar janela de editar
-                modificar.preencher(quartoEditavel);//pegar dados
-                getParent().add(modificar); // comando para abri o modificar, pois ele retorna o container do componente atual, no caso, de um internalframe
+                modificar.preencher(quartoEditavel);
+                
+                getParent().add(modificar);
                 modificar.setVisible(true);
-                confirmacaoExclusao = modificar.getConfirmacaoExclusao();
+                
+                itensLista.removeRow(i);// remover do jtable.
+                lista.remove(i);// remover do List
             }
         }
-
-        if(confirmacaoExclusao){
-            //excluir o selecionado
-            itensLista.removeRow(i);// remover do jtable.
-            lista.remove(i);// remover do List
-
-        }
-
     }//GEN-LAST:event_modificarFuncionarioActionPerformed
 
     public void loadJTable(){

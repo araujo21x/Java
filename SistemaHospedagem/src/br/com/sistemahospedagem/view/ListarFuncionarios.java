@@ -161,33 +161,25 @@ public final class ListarFuncionarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_ExcluirFuncionarioActionPerformed
 
     private void modificarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarFuncionarioActionPerformed
-        int i = 0;
-        boolean confirmacaoExclusao = false;
-
         DefaultTableModel itensLista = (DefaultTableModel) tabelaFuncionario.getModel();
-        for( i = 0; i <= lista.size(); i++){
+        for(int i = 0; i <= lista.size(); i++){
             if(i == tabelaFuncionario.getSelectedRow()){
 
                 //pegar os valores do que sera editado
                 Funcionario funcionarioEditavel = new Funcionario();
+                ModificarFuncionario modificar = new ModificarFuncionario();
                 funcionarioEditavel = lista.get(i);
-
-                //mandar dados e inicializar a janela
-                ModificarFuncionario modificar = new ModificarFuncionario();//criar janela de editar
-                modificar.preencher(funcionarioEditavel);//pegar dados
-                getParent().add(modificar); // comando para abri o modificar, pois ele retorna o container do componente atual, no caso, de um internalframe
+                modificar.preencher(funcionarioEditavel);
+                
+                getParent().add(modificar); 
                 modificar.setVisible(true);
-                confirmacaoExclusao = modificar.getConfirmacaoExclusao();
+                
+                itensLista.removeRow(i);
+                lista.remove(i);
             }
         }
 
-        if(confirmacaoExclusao){
-            //excluir o selecionado
-            itensLista.removeRow(i);// remover do jtable.
-            lista.remove(i);// remover do List
-
-        }
-
+            
     }//GEN-LAST:event_modificarFuncionarioActionPerformed
 
     public void loadJTable(){

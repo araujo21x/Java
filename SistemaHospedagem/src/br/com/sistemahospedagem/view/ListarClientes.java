@@ -177,36 +177,24 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_ExcluirFuncionarioActionPerformed
 
     private void modificarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarFuncionarioActionPerformed
-        int i = 0;
-        boolean confirmacaoExclusao = false;
-
         DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
         
-        for( i = 0; i <= lista.size(); i++){
-            if(i == tabelaClientes.getSelectedRow()){
-                
-                //pegar os valores do que sera editado
+        for(int i = 0; i <= lista.size(); i++){
+            if(i == tabelaClientes.getSelectedRow()){              
                 Cliente clieteEditavel = new Cliente();
+                ModificarCliente modificar = new ModificarCliente();
                 clieteEditavel = lista.get(i);
+                modificar.preencher(clieteEditavel);
                 
-                //mandar dados e inicializar a janela
-                ModificarCliente modificar = new ModificarCliente();//criar janela de editar
-                modificar.preencher(clieteEditavel);//pegar dados
-                
-                getParent().add(modificar); // comando para abri o modificar, pois ele retorna o container do componente atual, no caso, de um internalframe
+                //Visibilidade de tela
+                getParent().add(modificar); 
                 modificar.setVisible(true);
+                //Apagar
+                itensLista.removeRow(i);
+                lista.remove(i);
                 
-                confirmacaoExclusao = modificar.getConfirmacaoExclusao();
-            }
+            } 
         }
-        
-        if(confirmacaoExclusao){
-            //excluir o selecionado
-            itensLista.removeRow(i);// remover do jtable.
-            lista.remove(i);// remover do List
-            
-        }
-
     }//GEN-LAST:event_modificarFuncionarioActionPerformed
 
     private void chekInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chekInActionPerformed
@@ -216,7 +204,7 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
         for(int i = 0; i <= lista.size(); i++){
             if(i == tabelaClientes.getSelectedRow()){
                 //Abrir tela
-                TelaCheckIn telaCheckIn = new TelaCheckIn();
+                CadastroCheckIn telaCheckIn = new CadastroCheckIn();
                 telaCheckIn.pegarIndexCliente(i);
                 getParent().add(telaCheckIn);
                 telaCheckIn.setVisible(true);

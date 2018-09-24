@@ -1,7 +1,6 @@
 package br.com.sistemahospedagem.view;
 
 import br.com.sistemahospedagem.dao.CheckInDAO;
-import br.com.sistemahospedagem.dao.ClienteDAO;
 import br.com.sistemahospedagem.dao.QuartoDAO;
 import br.com.sistemahospedagem.model.CheckIn;
 import br.com.sistemahospedagem.model.Cliente;
@@ -15,9 +14,7 @@ public class ModificarCheckIn extends javax.swing.JInternalFrame {
     private boolean confirmacaoExclusao = false;
     
     private List<Quarto> listaQuartos;
-    //private List<Cliente> listaClientes;
     private QuartoDAO daoQuartos;
-    //private ClienteDAO daoClientes;
     private CheckIn chekInModificado;
     
     public ModificarCheckIn(){
@@ -246,8 +243,6 @@ public class ModificarCheckIn extends javax.swing.JInternalFrame {
             confirmacaoExclusao = true;
             
             Cliente clienteSelecionado = new Cliente();
-            /*daoClientes = new ClienteDAO();
-            listaClientes = daoClientes.list();*/
             clienteSelecionado = chekInModificado.getCliente();
         
             for(int i = 0; i <= listaQuartos.size(); i++){
