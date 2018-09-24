@@ -10,6 +10,7 @@ public class CheckIn {
     private Integer dias;
     private Integer pessoas;
     private Integer quantidadeQuartos;
+    private Double TotaConta;
     
     public CheckIn(){
     }
@@ -64,4 +65,13 @@ public class CheckIn {
         }
         ConsumoCliente.add(Consumonovo);  
     }
+
+    public Double getTotaConta() {
+        return TotaConta;
+    }
+
+    public void setTotaConta(Double TotaConta) {
+        this.TotaConta = TotaConta;
+    }
+    
 }

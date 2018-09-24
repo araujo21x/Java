@@ -64,16 +64,9 @@ public final class ClientesAtivos extends javax.swing.JInternalFrame {
                 "Nome", "CPF", "Quarto", "Valor"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -83,6 +76,11 @@ public final class ClientesAtivos extends javax.swing.JInternalFrame {
 
         modificarChekIn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         modificarChekIn.setText("Modificar ChekIn");
+        modificarChekIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarChekInActionPerformed(evt);
+            }
+        });
 
         CheckOut.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         CheckOut.setText("Check-Out");
@@ -150,33 +148,60 @@ public final class ClientesAtivos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameClosing
 
     private void CheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckOutActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
+        
+        for(int i = 0; i <= listaCheckIn.size(); i++){
+            if(i == tabelaClientes.getSelectedRow()){
+                itensLista.removeRow(i);// remover do jtable.
+                listaCheckIn.remove(i);// remover do List
+            }
+        }
     }//GEN-LAST:event_CheckOutActionPerformed
 
+    private void modificarChekInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarChekInActionPerformed
+        int i;
+        boolean confirmacaoExclusao = false;
+        
+        DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
+        for( i = 0; i <= listaCheckIn.size(); i++){
+            if(i == tabelaClientes.getSelectedRow()){                
+                CheckIn CheckInEditavel = new CheckIn();
+                ModificarCheckIn modificar = new ModificarCheckIn();//criar janela de editar
+                
+                CheckInEditavel = listaCheckIn.get(i);
+                modificar.receberDados(CheckInEditavel);//pegar dados
+                
+                getParent().add(modificar); // comando para abri o modificar, pois ele retorna o container do componente atual, no caso, de um internalframe
+                modificar.setVisible(true);
+                
+                confirmacaoExclusao = modificar.getConfirmacaoExclusao();
+            }
+        }
+        if(confirmacaoExclusao){
+            itensLista.removeRow(i);// remover do jtable.
+            listaCheckIn.remove(i);// remover do List
+        }
+    }//GEN-LAST:event_modificarChekInActionPerformed
     public void loadJTable(){
         
         DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();//tabelaCliente e o nome da tabela
-        if(daoCheckIn == null){
-            daoCheckIn = new CheckInDAO();
-        }
-        
+
+        daoCheckIn = new CheckInDAO();
         listaCheckIn = daoCheckIn.list();
 
         if(listaCheckIn == null){ //Mensagem de Erro
             JOptionPane.showMessageDialog(null, "Nao tem Cadastro");
         }else{
-            for(CheckIn entity: listaCheckIn) { //adiciona os intens desejado na JTable
-                 
-                Object[] insered = new Object[4]; //cria a colunas
-                insered[0] = entity. getCliente().getNome(); //preenche a colunas
-                insered[1] = entity.getCliente().getCpf(); //preenche a colunas
-                insered[2] = entity.getQuarto().getNumero(); //preenche a colunas
-                insered[3] = entity.getCliente().getObservacao(); //preenche a colunas
-                itensLista.addRow(insered);//inseri
+            for(CheckIn entity: listaCheckIn) { //adicionar os intens desejado na JTable 
+                Object[] insered = new Object[4]; //criar a colunas
+                insered[0] = entity. getCliente().getNome(); //preencher a colunas
+                insered[1] = entity.getCliente().getCpf(); //preencher a colunas
+                insered[2] = entity.getQuarto().getNumero(); //preencher a colunas
+                insered[3] = entity.getTotaConta(); //preencher a colunas
+                itensLista.addRow(insered);//inserir
             }
         }     
-    }
-    
+    }   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CheckOut;
     private javax.swing.JLabel jLabel3;

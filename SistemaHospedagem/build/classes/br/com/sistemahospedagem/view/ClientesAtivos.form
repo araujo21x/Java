@@ -111,7 +111,7 @@
                         <Column editable="false" title="Nome" type="java.lang.Object"/>
                         <Column editable="false" title="CPF" type="java.lang.Object"/>
                         <Column editable="false" title="Quarto" type="java.lang.Object"/>
-                        <Column editable="false" title="Valor" type="java.lang.Double"/>
+                        <Column editable="false" title="Valor" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -152,6 +152,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Modificar ChekIn"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modificarChekInActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="CheckOut">
               <Properties>

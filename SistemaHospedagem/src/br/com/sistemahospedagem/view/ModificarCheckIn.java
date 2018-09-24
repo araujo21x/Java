@@ -10,7 +10,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class TelaCheckIn extends javax.swing.JInternalFrame {
+public class ModificarCheckIn extends javax.swing.JInternalFrame {
+    
+    private boolean confirmacaoExclusao = false;
     
     private List<Quarto> listaQuartos;
     private List<Cliente> listaClientes;
@@ -18,7 +20,7 @@ public class TelaCheckIn extends javax.swing.JInternalFrame {
     private ClienteDAO daoClientes;
     private int indexCliente;
     
-    public TelaCheckIn(){
+    public ModificarCheckIn(){
         initComponents();
         loadJTable();
     }
@@ -49,20 +51,20 @@ public class TelaCheckIn extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Cadastro de Cliente");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameClosing(evt);
             }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
         });
 
@@ -222,7 +224,10 @@ public class TelaCheckIn extends javax.swing.JInternalFrame {
             dispose();
         }
     }//GEN-LAST:event_cancelarActionPerformed
-
+    private void receberDados(CheckIn checkIn){
+        
+        
+    }
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         Integer conversor;
         Double ValorQuarto;
