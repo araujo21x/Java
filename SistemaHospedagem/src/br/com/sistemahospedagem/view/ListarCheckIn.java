@@ -154,6 +154,7 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
             if(i == tabelaClientes.getSelectedRow()){
                 itensLista.removeRow(i);// remover do jtable.
                 listaCheckIn.remove(i);// remover do List
+                dispose();
             }
         }
     }//GEN-LAST:event_CheckOutActionPerformed
@@ -174,6 +175,8 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
                 
                 itensLista.removeRow(i);
                 listaCheckIn.remove(i);
+
+                dispose();
             } 
         }
     }//GEN-LAST:event_modificarChekInActionPerformed

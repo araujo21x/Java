@@ -428,7 +428,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
             
             ClienteDAO dao = new ClienteDAO();
             dao.save(novoCliente);
-            System.out.println(novoCliente);
+            
         }
 
 
@@ -458,11 +458,10 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
             ClienteDAO dao = new ClienteDAO();
             dao.save(novoCliente);
             JOptionPane.showMessageDialog(null, "Confirmado");
-            JOptionPane.showMessageDialog(null, dao.list());
+            dispose();
              
         }else{
             JOptionPane.showMessageDialog(null, "Erro");
-            System.out.println("Erro");
         }*/
          
 

@@ -37,20 +37,20 @@ public final class ListarQuartos extends javax.swing.JInternalFrame {
         setTitle("Quartos");
         setToolTipText("Quartos");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameClosing(evt);
             }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
         });
 
@@ -95,14 +95,15 @@ public final class ListarQuartos extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 767, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(modificarFuncionario)
-                .addGap(18, 18, 18)
-                .addComponent(ExcluirFuncionario)
-                .addGap(296, 296, 296))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(279, 279, 279)
-                .addComponent(jLabel3)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(279, 279, 279)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(271, 271, 271)
+                        .addComponent(modificarFuncionario)
+                        .addGap(80, 80, 80)
+                        .addComponent(ExcluirFuncionario)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -111,12 +112,12 @@ public final class ListarQuartos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modificarFuncionario)
                     .addComponent(ExcluirFuncionario))
-                .addContainerGap())
+                .addContainerGap(175, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel3);
@@ -131,7 +132,7 @@ public final class ListarQuartos extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
         );
 
         pack();
@@ -175,6 +176,8 @@ public final class ListarQuartos extends javax.swing.JInternalFrame {
                 
                 itensLista.removeRow(i);// remover do jtable.
                 lista.remove(i);// remover do List
+                
+                dispose();
             }
         }
     }//GEN-LAST:event_modificarFuncionarioActionPerformed

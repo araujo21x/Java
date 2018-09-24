@@ -230,7 +230,9 @@ public class CadastrarQuarto extends javax.swing.JInternalFrame {
             novoQuarto.setStatus("Inativo");
             
             QuartoDAO dao = new QuartoDAO();
-            dao.save(novoQuarto);            
+            dao.save(novoQuarto); 
+            JOptionPane.showMessageDialog(null, "Confirmado");
+            dispose();
         }
         
         /*Quarto novoQuarto = new Quarto();
@@ -242,7 +244,8 @@ public class CadastrarQuarto extends javax.swing.JInternalFrame {
 
         QuartoDAO dao = new QuartoDAO();
         dao.save(novoQuarto);
-        System.out.println(novoQuarto);
+        JOptionPane.showMessageDialog(null, "Confirmado");
+        dispose();
         */
 
     }//GEN-LAST:event_cadastrarActionPerformed

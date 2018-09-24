@@ -512,6 +512,7 @@ public class CadastrarFuncionario extends javax.swing.JInternalFrame {
             FuncionarioDAO dao = new FuncionarioDAO();
             dao.save(novoFuncionario);
             System.out.println(novoFuncionario);
+            dispose();
         }
         
         /*Funcionario novoFuncionario = new Funcionario();
@@ -537,7 +538,7 @@ public class CadastrarFuncionario extends javax.swing.JInternalFrame {
             FuncionarioDAO dao = new FuncionarioDAO();
             dao.save(novoFuncionario);
             JOptionPane.showMessageDialog(null, "Confirmado");
-            JOptionPane.showMessageDialog(null, dao.list());
+            dispose();
 
         }else{
             JOptionPane.showMessageDialog(null, "Erro");

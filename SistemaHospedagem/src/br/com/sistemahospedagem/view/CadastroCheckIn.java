@@ -259,6 +259,8 @@ public class CadastroCheckIn extends javax.swing.JInternalFrame {
         
         CheckInDAO daoCheckIn = new CheckInDAO();
         daoCheckIn.save(novoCheckIn);
+        JOptionPane.showMessageDialog(null, "Confirmado");
+        dispose();
     }//GEN-LAST:event_confirmarActionPerformed
    
     private void loadJTable(){

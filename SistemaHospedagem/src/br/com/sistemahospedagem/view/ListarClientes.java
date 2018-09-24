@@ -192,7 +192,8 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
                 //Apagar
                 itensLista.removeRow(i);
                 lista.remove(i);
-                
+
+                dispose();
             } 
         }
     }//GEN-LAST:event_modificarFuncionarioActionPerformed
@@ -208,6 +209,7 @@ public final class ListarClientes extends javax.swing.JInternalFrame {
                 telaCheckIn.pegarIndexCliente(i);
                 getParent().add(telaCheckIn);
                 telaCheckIn.setVisible(true);
+                dispose();
             }
         }
     }//GEN-LAST:event_chekInActionPerformed
