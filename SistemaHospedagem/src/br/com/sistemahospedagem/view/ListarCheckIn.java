@@ -27,6 +27,7 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
         tabelaClientes = new javax.swing.JTable();
         modificarChekIn = new javax.swing.JButton();
         CheckOut = new javax.swing.JButton();
+        adicionarConsumo = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -90,11 +91,18 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
             }
         });
 
+        adicionarConsumo.setText("ADDConsumo");
+        adicionarConsumo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adicionarConsumoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 873, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -103,9 +111,11 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(259, 259, 259)
                         .addComponent(CheckOut)
-                        .addGap(73, 73, 73)
+                        .addGap(18, 18, 18)
+                        .addComponent(adicionarConsumo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(modificarChekIn)))
-                .addContainerGap(277, Short.MAX_VALUE))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,10 +124,11 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CheckOut)
-                    .addComponent(modificarChekIn))
+                    .addComponent(modificarChekIn)
+                    .addComponent(adicionarConsumo))
                 .addContainerGap(151, Short.MAX_VALUE))
         );
 
@@ -183,6 +194,27 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
             } 
         }
     }//GEN-LAST:event_modificarChekInActionPerformed
+
+    private void adicionarConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarConsumoActionPerformed
+        DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();
+        for(int i = 0; i <= listaCheckIn.size(); i++){
+            if(i == tabelaClientes.getSelectedRow()){                
+                CheckIn CheckInEditavel = new CheckIn();
+                ModificarCheckIn modificar = new ModificarCheckIn();
+                CheckInEditavel = listaCheckIn.get(i);
+                modificar.receberDados(CheckInEditavel);
+                modificar.preencher();
+                
+                getParent().add(modificar);
+                modificar.setVisible(true);
+                
+                itensLista.removeRow(i);
+                listaCheckIn.remove(i);
+
+                dispose();
+            } 
+        }
+    }//GEN-LAST:event_adicionarConsumoActionPerformed
     public void loadJTable(){
         
         DefaultTableModel itensLista = (DefaultTableModel) tabelaClientes.getModel();//tabelaCliente e o nome da tabela
@@ -205,6 +237,7 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
     }   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CheckOut;
+    private javax.swing.JButton adicionarConsumo;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
