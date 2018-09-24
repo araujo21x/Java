@@ -533,22 +533,15 @@ public class ModificarFuncionario extends javax.swing.JInternalFrame {
             novoFuncionario.setCelular(celular.getText());
             novoFuncionario.setEmail(email.getText());
 
-            FuncionarioDAO dao = new FuncionarioDAO();
-            dao.save(novoFuncionario);
-            JOptionPane.showMessageDialog(null, "Concluido com Sucesso!!!");
-            dispose();
-            /*if(verificar(novoFuncionario)){
-
+            if(verificar(novoFuncionario)){
                 FuncionarioDAO dao = new FuncionarioDAO();
                 dao.save(novoFuncionario);
-                JOptionPane.showMessageDialog(null, "Confirmado");
-                JOptionPane.showMessageDialog(null, dao.list());
-
+                JOptionPane.showMessageDialog(null, "Concluido com Sucesso!!!");
+                dispose();  
             }else{
                 JOptionPane.showMessageDialog(null, "Erro");
-                System.out.println("Erro");
             }
-             */
+             
         }
         
 

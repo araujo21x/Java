@@ -484,38 +484,8 @@ public class CadastrarFuncionario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        
-        for (int i = 0; i <= 10; i++) {
-            Funcionario novoFuncionario = new Funcionario();
-            novoFuncionario.setNome("teste"+i);
-            novoFuncionario.setSobrenome("teste"+i);
-            novoFuncionario.setNascimento(nascimento.getText());
-            novoFuncionario.setSexo((String) sexo.getSelectedItem());
-            novoFuncionario.setCpf(cpf.getText());
-            novoFuncionario.setRua("teste"+i);
-            novoFuncionario.setBairro("teste"+i);
-            novoFuncionario.setCidade("teste"+i);
-            novoFuncionario.setNumeroCasa("teste"+i);
-            novoFuncionario.setCep(cep.getText());
-            novoFuncionario.setEstado((String) estado.getSelectedItem());
-            novoFuncionario.setCelular(celular.getText());
-            novoFuncionario.setEmail("teste"+i);
-            novoFuncionario.setCargo((String) cargo.getSelectedItem());
-            //novoFuncionario.setSalario(salarioFuncionario.getText());
-            novoFuncionario.setEntrada( dataAdmissao.getText());
-            novoFuncionario.setDiaPagamento (dataPagamento.getText());
-            novoFuncionario.setLogin(loginFuncionario.getText());
-            novoFuncionario.setSenha(senhaFuncionario.getText());
-            //novoFuncionario.setCargo senhaFuncionarioConfirmacao.getText();
-            
 
-            FuncionarioDAO dao = new FuncionarioDAO();
-            dao.save(novoFuncionario);
-            System.out.println(novoFuncionario);
-            dispose();
-        }
-        
-        /*Funcionario novoFuncionario = new Funcionario();
+        Funcionario novoFuncionario = new Funcionario();
 
         novoFuncionario.setNome( nome.getText());
         novoFuncionario.setSobrenome(sobrenome.getText());
@@ -530,6 +500,13 @@ public class CadastrarFuncionario extends javax.swing.JInternalFrame {
         novoFuncionario.setEstado((String)estado.getSelectedItem());
         novoFuncionario.setCelular(celular.getText());
         novoFuncionario.setEmail(email.getText());
+        novoFuncionario.setCargo((String) cargo.getSelectedItem());
+        //novoFuncionario.setSalario(salarioFuncionario.getText());
+        novoFuncionario.setEntrada( dataAdmissao.getText());
+        novoFuncionario.setDiaPagamento (dataPagamento.getText());
+        novoFuncionario.setLogin(loginFuncionario.getText());
+        novoFuncionario.setSenha(senhaFuncionario.getText());
+        //novoFuncionario.setCargo senhaFuncionarioConfirmacao.getText();
 
         JOptionPane.showMessageDialog(null, novoFuncionario);
 
@@ -543,7 +520,7 @@ public class CadastrarFuncionario extends javax.swing.JInternalFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Erro");
             System.out.println("Erro");
-        }*/
+        }
 
     }//GEN-LAST:event_cadastrarActionPerformed
 

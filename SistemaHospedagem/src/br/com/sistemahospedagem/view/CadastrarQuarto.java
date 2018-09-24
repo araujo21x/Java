@@ -215,39 +215,25 @@ public class CadastrarQuarto extends javax.swing.JInternalFrame {
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         Integer converso;
 
-        for(int i = 0; i <=10; i++){
-            Quarto novoQuarto = new Quarto();
-            
-            novoQuarto.setNumero("test"+i);
-            novoQuarto.setVentilacao((String) ventilação.getSelectedItem());
-            
-            converso = Integer.parseInt((String) quantidadeCasal.getSelectedItem());
-            novoQuarto.setQuantidadeCamaCasal(converso);
-            
-            converso = Integer.parseInt((String) quantidadeSolteiro.getSelectedItem());
-            novoQuarto.setQuantidadeCamaSolteiro(converso);
-            
-            novoQuarto.setStatus("Inativo");
-            
-            QuartoDAO dao = new QuartoDAO();
-            dao.save(novoQuarto); 
-            JOptionPane.showMessageDialog(null, "Confirmado");
-            dispose();
-        }
-        
-        /*Quarto novoQuarto = new Quarto();
+        Quarto novoQuarto = new Quarto();
 
         novoQuarto.setNumero(numeroQuarto.getText());
         novoQuarto.setVentilacao((String) ventilação.getSelectedItem());
-        novoQuarto.setQuantidadeCamaCasal((Integer) quantidadeCasal.getSelectedItem());
-        novoQuarto.setQuantidadeCamaSolteiro((Integer) quantidadeSolteiro.getSelectedItem());
+
+        converso = Integer.parseInt((String) quantidadeCasal.getSelectedItem());
+        novoQuarto.setQuantidadeCamaCasal(converso);
+
+        converso = Integer.parseInt((String) quantidadeSolteiro.getSelectedItem());
+        novoQuarto.setQuantidadeCamaSolteiro(converso);
+
+        novoQuarto.setStatus("Inativo");
 
         QuartoDAO dao = new QuartoDAO();
-        dao.save(novoQuarto);
+        dao.save(novoQuarto); 
         JOptionPane.showMessageDialog(null, "Confirmado");
         dispose();
-        */
-
+        
+        
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void numeroQuartoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numeroQuartoMouseClicked

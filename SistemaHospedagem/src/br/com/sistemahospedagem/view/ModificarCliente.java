@@ -463,23 +463,22 @@ public class ModificarCliente extends javax.swing.JInternalFrame {
             novoCliente.setModelo(modelo.getText());
             novoCliente.setCorCarro(corCarro.getText());
             novoCliente.setPlacaCarro(placaCarro.getText());
+            novoCliente.setSituacao("Inativo");
 
-            ClienteDAO dao = new ClienteDAO();
-            dao.save(novoCliente);
-            JOptionPane.showMessageDialog(null, "Concluido com Sucesso!!!");
-            dispose();
-            /*if(verificar(novoCliente)){
+            //ClienteDAO dao = new ClienteDAO();
+            //dao.save(novoCliente);
+            //JOptionPane.showMessageDialog(null, "Concluido com Sucesso!!!");
+           // dispose();
+            if(verificar(novoCliente)){
 
                 ClienteDAO dao = new ClienteDAO();
                 dao.save(novoCliente);
-                JOptionPane.showMessageDialog(null, "Confirmado");
-                JOptionPane.showMessageDialog(null, dao.list());
-
+                JOptionPane.showMessageDialog(null, "Concluido com Sucesso!!!");
+                dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "Erro");
-                System.out.println("Erro");
             }
-             */
+             
         }
 
     }//GEN-LAST:event_editarActionPerformed

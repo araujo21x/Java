@@ -405,7 +405,35 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         
-        for (int i = 0; i <= 10; i++) {
+        Cliente novoCliente = new Cliente();
+
+        novoCliente.setNome( nome.getText());
+        novoCliente.setSobrenome(sobrenome.getText());
+        novoCliente.setNascimento(nascimento.getText());
+        novoCliente.setSexo((String)sexo.getSelectedItem());
+        novoCliente.setCpf(cpf.getText());
+        novoCliente.setRua(rua.getText());
+        novoCliente.setBairro(bairro.getText());
+        novoCliente.setCidade(cidade.getText());
+        novoCliente.setNumeroCasa(numeroCasa.getText());
+        novoCliente.setCep(cep.getText());
+        novoCliente.setEstado((String)estado.getSelectedItem());
+        novoCliente.setCelular(celular.getText());
+        novoCliente.setEmail(email.getText());
+        novoCliente.setModelo(modelo.getText());
+        novoCliente.setCorCarro(corCarro.getText());
+        novoCliente.setPlacaCarro(placaCarro.getText());
+        novoCliente.setSituacao("Inativo");
+        
+        if(verificar(novoCliente)){
+            ClienteDAO dao = new ClienteDAO();
+            dao.save(novoCliente);
+            JOptionPane.showMessageDialog(null, "Confirmado");
+            dispose();    
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro");
+        }
+       /* for (int i = 0; i <= 10; i++) {
             Cliente novoCliente = new Cliente();
             
             novoCliente.setNome("teste"+i);
@@ -429,42 +457,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
             ClienteDAO dao = new ClienteDAO();
             dao.save(novoCliente);
             
-        }
-
-
-        /*
-        Cliente novoCliente = new Cliente();
-
-        novoCliente.setNome( nome.getText());
-        novoCliente.setSobrenome(sobrenome.getText());
-        novoCliente.setNascimento(nascimento.getText());
-        novoCliente.setSexo((String)sexo.getSelectedItem());
-        novoCliente.setCpf(cpf.getText());
-        novoCliente.setRua(rua.getText());
-        novoCliente.setBairro(bairro.getText());
-        novoCliente.setCidade(cidade.getText());
-        novoCliente.setNumeroCasa(numeroCasa.getText());
-        novoCliente.setCep(cep.getText());
-        novoCliente.setEstado((String)estado.getSelectedItem());
-        novoCliente.setCelular(celular.getText());
-        novoCliente.setEmail(email.getText());
-        novoCliente.setModelo(modelo.getText());
-        novoCliente.setCorCarro(corCarro.getText());
-        novoCliente.setPlacaCarro(placaCarro.getText());
-        novoCliente.setSituacao("Inativo");
-        
-        if(verificar(novoCliente)){
-            
-            ClienteDAO dao = new ClienteDAO();
-            dao.save(novoCliente);
-            JOptionPane.showMessageDialog(null, "Confirmado");
-            dispose();
-             
-        }else{
-            JOptionPane.showMessageDialog(null, "Erro");
         }*/
-         
-
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed

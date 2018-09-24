@@ -240,6 +240,7 @@ public class ModificarQuarto extends javax.swing.JInternalFrame {
             novoQuarto.setQuantidadeCamaCasal(converso);
             converso = Integer.parseInt((String) quantidadeSolteiro.getSelectedItem());
             novoQuarto.setQuantidadeCamaSolteiro(converso);
+            novoQuarto.setStatus("Inativo");
 
             QuartoDAO dao = new QuartoDAO();
             dao.save(novoQuarto);
