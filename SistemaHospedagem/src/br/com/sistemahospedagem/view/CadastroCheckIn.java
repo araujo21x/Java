@@ -193,7 +193,7 @@ public class CadastroCheckIn extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,6 +228,7 @@ public class CadastroCheckIn extends javax.swing.JInternalFrame {
         Double ValorQuarto;
         
         DefaultTableModel itensLista = (DefaultTableModel) quartosDisponiveis.getModel();
+        
         Cliente clienteSelecionado = new Cliente();
         CheckIn novoCheckIn = new CheckIn();
         daoClientes = new ClienteDAO();

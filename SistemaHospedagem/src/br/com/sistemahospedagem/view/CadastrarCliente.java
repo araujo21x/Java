@@ -433,31 +433,6 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Erro");
         }
-       /* for (int i = 0; i <= 10; i++) {
-            Cliente novoCliente = new Cliente();
-            
-            novoCliente.setNome("teste"+i);
-            novoCliente.setSobrenome("teste"+i);
-            novoCliente.setNascimento(nascimento.getText());
-            novoCliente.setSexo((String) sexo.getSelectedItem());
-            novoCliente.setCpf(cpf.getText());
-            novoCliente.setRua("teste"+i);
-            novoCliente.setBairro("teste"+i);
-            novoCliente.setCidade("teste"+i);
-            novoCliente.setNumeroCasa("teste"+i);
-            novoCliente.setCep(cep.getText());
-            novoCliente.setEstado((String) estado.getSelectedItem());
-            novoCliente.setCelular(celular.getText());
-            novoCliente.setEmail("teste"+i);
-            novoCliente.setModelo("teste"+i);
-            novoCliente.setCorCarro("teste"+i);
-            novoCliente.setPlacaCarro("teste"+i);
-            novoCliente.setSituacao("Inativo");
-            
-            ClienteDAO dao = new ClienteDAO();
-            dao.save(novoCliente);
-            
-        }*/
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed

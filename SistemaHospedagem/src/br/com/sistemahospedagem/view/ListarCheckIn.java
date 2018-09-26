@@ -200,6 +200,7 @@ public final class ListarCheckIn extends javax.swing.JInternalFrame {
             if(i == tabelaClientes.getSelectedRow()){                
                 CheckIn CheckInEditavel = new CheckIn();
                 ModificarCheckIn modificar = new ModificarCheckIn();
+                
                 CheckInEditavel = listaCheckIn.get(i);
                 modificar.receberDados(CheckInEditavel);
                 modificar.preencher();
